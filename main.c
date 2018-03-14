@@ -5,9 +5,7 @@
 ** dkmk
 */
 
-//#include "list.h"
 #include <stdlib.h>
-//#include <stdio.h>                                               
 #include <curses.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -15,7 +13,6 @@
 #include <errno.h>
 #include <unistd.h>
 #include "list.h"
-
 
 int     strcom(char *a, char *b)
 {
@@ -76,6 +73,39 @@ pieces_t	*get_pieces(pieces_t *a)
 	return (a);	
 }
 
+int	debug_tetrimino(pieces_t *a)
+{
+	while(a) {
+		my_putstr("Tetrimino :  Name ");
+		my_putstr(a->name);
+		if (a->size[0] == '0' && a->size[1] == '0') {
+			my_putstr(" :  Error\n");
+		}
+		else {
+			my_putstr(" :  Size ");
+			my_putchar(a->size[0]);
+			my_putchar('*');
+			my_putchar(a->size[1]);
+			my_putstr(" :  Color ");
+			my_putchar(a->color);
+			my_putstr(" :\n");
+		}
+		a = a->next;
+	}
+	return (0);
+}
+
+void	debug_mode(int ac, char **av, pieces_t *a)
+{
+	int	i;
+
+	for (i = ac -1; i != 0; i--)
+		if (strcom("-D", av[i]) == 1) {
+			my_putstr("debug_modeon\n");
+			debug_tetrimino(a);
+		}
+}
+
 int	main(int ac, char **av)
 {
 	pieces_t	*a = NULL;
@@ -84,6 +114,7 @@ int	main(int ac, char **av)
 	a = get_pieces(a);
 	order_pieces(&a, a);
 	print_list(a);
-	feed_linked_list(&a);
+	feed_linked_list(a);
+	debug_mode(ac, av, a);
 	free(a);
 }

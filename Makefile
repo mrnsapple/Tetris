@@ -11,7 +11,7 @@ SRC 	=	main.c			\
 		my_put_nbr.c		\
 		linked_list.c		\
 		alphabetic.c		\
-		feed_piece.c
+		feed_piece.c		\
 		put_in_array.c
 
 OBJ	=	$(SRC:.c=.o)

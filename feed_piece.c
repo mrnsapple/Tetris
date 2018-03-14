@@ -36,7 +36,9 @@ void	read_files(int fd, pieces_t *a)
 	int	size;
 	int	i = 0;
 	char    buff[1];
-
+	int	y = -1;
+	int	x = 0;
+	
 	for (size = read(fd, buff, 1); size > 0;
              size = read(fd, buff, 1)) {
 		if (buff[0] == ' ')
@@ -45,6 +47,16 @@ void	read_files(int fd, pieces_t *a)
 			a->size[i] = buff[0];
 		if (i == 2)
 			a->color = buff[0];
+		if (y != -1) {
+			a->map[y][x] = buff[0];
+			x++;
+		}
+		if (buff[0] == '\n') {
+			y++;
+			a->map[y][x + 1] = '\0';
+			x = 0;
+		}
+			
 		//printf("buf:%c\n", buff[0]);
 	}
 }
@@ -55,7 +67,7 @@ int	error_piece(char *file, pieces_t *a)
 	int	size;
 	int	y = 0;
 	char    buff[1];
-	int	x = 0;
+	int	x[2] = {0,0};
 	
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -64,7 +76,9 @@ int	error_piece(char *file, pieces_t *a)
              size = read(fd, buff, 1)) {
 		if (buff[0] == '\n') {
 			y++;
-			x = 0;
+			if (x[1] < x[0] && y != 1)
+				x[1] = x[0];
+			x[0] = 0;
 		}
 		if (y == 0 && (buff[0] != ' '
 			       && (buff[0] < '0' || buff[0] > '9')))
@@ -72,9 +86,9 @@ int	error_piece(char *file, pieces_t *a)
 		if (y != 0 && buff[0] != ' ' && buff[0] != '*'
 		    && buff[0] != '\n')
 			return (0);
-		x++;
+		x[0]++;
 	}
-	
+	a->map = malloca(y, x[1]);
 	return (1);
 }
 
@@ -87,8 +101,11 @@ int     feed_piece(pieces_t *a, char *name)
 	file = file_name(name, size);
 	a->name = delete_after_point(name);
         printf("%s\n", file);
-	if (error_piece(file, a) == 0)
+	if (error_piece(file, a) == 0) {
+		a->size[0] = '0';
+		a->size[1] = '0';
 		return (0);
+	}
 	printf("hehe\n");
         fd = open(file, O_RDONLY);//O_CREAT | O_RDWR | O_TRUNC, 0644);
         if (fd == -1)
@@ -97,9 +114,9 @@ int     feed_piece(pieces_t *a, char *name)
         return (1);
 }
 
-void	feed_linked_list(pieces_t **a)
+void	feed_linked_list(pieces_t *a)
 {
-	pieces_t	*list = *a;
+	pieces_t	*list = a;
 
 	while(list) {
 		feed_piece(list, list->dir_name);

@@ -54,6 +54,8 @@ typedef struct	pieces
 int     alphabetic(char *a, char *b);
 char    *file_name(char *name, int i);
 int     feed_piece(pieces_t *a, char *name);
+char	**malloca(int num_ar, int cha);
+int **int_malloca(int num_ar, int cha);
 
 int     my_strlen(char *av);
 int	strcom(char *a, char *b);
@@ -65,7 +67,7 @@ void    mv_from_there_all(pieces_t *list, pieces_t *a, char *dir_name);
 int     help(int ac, char **av);
 void    print_list(pieces_t *a);
 void    order_pieces(pieces_t **list, pieces_t *a);
-void    feed_linked_list(pieces_t **a);
+void    feed_linked_list(pieces_t *a);
 
 int	my_strcmp(char *pwd, char *line);
 int	my_put_nbr(int nb);
