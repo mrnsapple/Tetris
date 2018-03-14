@@ -12,6 +12,7 @@ SRC 	=	main.c			\
 		linked_list.c		\
 		alphabetic.c		\
 		feed_piece.c
+		put_in_array.c
 
 OBJ	=	$(SRC:.c=.o)
 
