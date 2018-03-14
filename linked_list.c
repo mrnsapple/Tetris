@@ -36,9 +36,6 @@ void	order_pieces(pieces_t **list, pieces_t *a)
 			else
 				tmp->next = tmp->next->next;
 			after->next = tmp;
-			//if (after->next != NULL)
-			//	printf("insidedir_name%s, nexrt_diname:%s\n", tmp->dir_name, tmp->next->dir_name);
-			printf("i:%d\n", i);
 			if (before == NULL || i == 0) {
 				a = after;
 				*list = a;
