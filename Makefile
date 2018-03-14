@@ -10,8 +10,8 @@ SRC 	=	main.c			\
 		my_puts.c		\
 		my_put_nbr.c		\
 		linked_list.c		\
-		alphabetic.c
-
+		alphabetic.c		\
+		feed_piece.c
 
 OBJ	=	$(SRC:.c=.o)
 

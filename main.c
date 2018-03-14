@@ -16,7 +16,6 @@
 #include <unistd.h>
 #include "list.h"
 
-int     alphabetic(char *a, char *b);
 
 int     strcom(char *a, char *b)
 {
@@ -28,42 +27,6 @@ int     strcom(char *a, char *b)
         if (b[i] != '\0')
 	        return (0);
         return (1);
-}
-
-char	*file_name(char *name, int i)
-{
-	char	*file;
-	char	*a = "tetriminos/";
-	int	g;
-
-	file = malloc(sizeof(char) * (my_strlen(name) + 11));
-	for (i = 0; a[i] != '\0'; i++)
-		file[i] = a[i];
-	for (g = 0, i = i; name[g] != '\0'; g++, i++)
-		file[i] = name[g];
-	file[i] = '\0';
-	return (file);	
-}
-
-int	feed_piece(int	i, pieces_t *a, char *name)
-{
-	int	fd;
-	char	buff[2];
-	int	size = 0;
-//	char	*file;
-
-	/*file =*/ file_name(name, size);
-	//printf("%s\n", file);
-	fd = open(name, O_CREAT | O_RDWR | O_TRUNC, 0644);
-//open(name, O_RDONLY);
-	if (fd == -1)
-		return (0);
-	for (size = read(fd, buff, 1); size > 0;
-	     size = read(fd, buff, 1)) {
-		//printf("%c\n", buff[0]);
-		a->color = '1';
-	}
-	return (1);
 }
 
 int	just_points(char *a)
@@ -121,5 +84,6 @@ int	main(int ac, char **av)
 	a = get_pieces(a);
 	order_pieces(&a, a);
 	print_list(a);
+	feed_linked_list(&a);
 	free(a);
 }
