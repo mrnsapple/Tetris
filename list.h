@@ -35,23 +35,31 @@ typedef struct	coord_t
 
 typedef	struct	each
 {
-	int	color;
+	char	color;
 	char	**map;
 	char	size[2];
 	char	*name;
 }each;
 
-typedef struct	pieces_t
+typedef struct	pieces
 {
-	struct	each *piece;
-}pieces;
+	char		color;
+	char		**map;
+	char		size[2];
+	char		*name;
+	char		*dir_name;
+	struct pieces	*next;
+}pieces_t;
 
+int     my_strlen(char *av);
 int	strcom(char *a, char *b);
 char	**feed_empty(char **av);
 char	**opene(char *av);
 char	**insert_map(char *av, char **ptr);
 char	**open_function(char	*av);
+void    mv_from_there_all(pieces_t *list, pieces_t *a, char *dir_name);
 int     help(int ac, char **av);
+void    print_list(pieces_t *a);
 
 int	my_strcmp(char *pwd, char *line);
 int	my_put_nbr(int nb);

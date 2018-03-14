@@ -11,6 +11,14 @@
 #include <unistd.h>
 #include "list.h"
 
+int	my_strlen(char *av)
+{
+	int	i;
+
+	for (i = 0; av[i] != '\0'; i++);
+	return (i);
+}
+		
 void	my_putchar(char c)
 {
 	write(1, &c, 1);
