@@ -91,11 +91,6 @@ int	place_dir_name_list(pieces_t **list, pieces_t *a, char *dir_name)
 		return (0);
 	}
 	while(tmp->next) {
-		/*if (alphabetic(dir_name, tmp->next->dir_name) == 0) {
-			printf("move\n");
-			mv_from_there_all(tmp,a, dir_name);
-			return (0);
-			}*/
 		tmp = tmp->next;
 	}
 	tmp->next = new;
@@ -103,31 +98,28 @@ int	place_dir_name_list(pieces_t **list, pieces_t *a, char *dir_name)
 }
 
 
-int	get_pieces(void)
+pieces_t	*get_pieces(pieces_t *a)
 {
 	DIR	*fd;
 	struct dirent	*buff;
-	pieces_t	*a = NULL;
+
 	fd = opendir("tetriminos");
 	for (buff = readdir(fd); buff != NULL; buff = readdir(fd)) {
 		if (just_points(buff->d_name) != 0) {
-			//printf("dir:%s\n", buff->d_name);
 			place_dir_name_list(&a, a, buff->d_name);
 		}
 	}
-	print_list(a);
-	printf("--------\n");
-	order_pieces(&a, a);
 	closedir(fd);
-	return (0);	
+	return (a);	
 }
 
 int	main(int ac, char **av)
 {
-	//pieces_t	*a = NULL;
+	pieces_t	*a = NULL;
 
-	//a = malloc(sizeof(a));
 	help(ac, av);
-	get_pieces();
-	//free(a);
+	a = get_pieces(a);
+	order_pieces(&a, a);
+	print_list(a);
+	free(a);
 }
