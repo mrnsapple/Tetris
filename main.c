@@ -50,17 +50,17 @@ int	feed_piece(int	i, pieces_t *a, char *name)
 	int	fd;
 	char	buff[2];
 	int	size = 0;
-	char	*file;
+//	char	*file;
 
-	file = file_name(name, size);
-	printf("%s\n", file);
+	/*file =*/ file_name(name, size);
+	//printf("%s\n", file);
 	fd = open(name, O_CREAT | O_RDWR | O_TRUNC, 0644);
 //open(name, O_RDONLY);
 	if (fd == -1)
 		return (0);
 	for (size = read(fd, buff, 1); size > 0;
 	     size = read(fd, buff, 1)) {
-		printf("%c\n", buff[0]);
+		//printf("%c\n", buff[0]);
 		a->color = '1';
 	}
 	return (1);
@@ -85,23 +85,19 @@ int	place_dir_name_list(pieces_t **list, pieces_t *a, char *dir_name)
 	new = malloc(sizeof(pieces_t));
 	new->dir_name = dir_name;
 	new->next = NULL;;
-	//dir_name//here I have to delete the .# of .#4.tetrimino
 	tmp = (*list);
 	if (*list == NULL) {
-		printf("null\n");
 		*list = new;
 		return (0);
 	}
 	while(tmp->next) {
-		printf("dir_name:%s,tmp_dir:%s\n",dir_name, tmp->dir_name);
-		if (alphabetic(dir_name, tmp->next->dir_name) == 0) {
+		/*if (alphabetic(dir_name, tmp->next->dir_name) == 0) {
 			printf("move\n");
 			mv_from_there_all(tmp,a, dir_name);
 			return (0);
-		}
+			}*/
 		tmp = tmp->next;
 	}
-	printf("hehe\n");
 	tmp->next = new;
 	return (0);
 }
@@ -115,12 +111,13 @@ int	get_pieces(void)
 	fd = opendir("tetriminos");
 	for (buff = readdir(fd); buff != NULL; buff = readdir(fd)) {
 		if (just_points(buff->d_name) != 0) {
-			printf("dir:%s\n", buff->d_name);
+			//printf("dir:%s\n", buff->d_name);
 			place_dir_name_list(&a, a, buff->d_name);
 		}
-		print_list(a);
-		printf("--------\n");
 	}
+	print_list(a);
+	printf("--------\n");
+	order_pieces(&a, a);
 	closedir(fd);
 	return (0);	
 }

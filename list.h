@@ -51,6 +51,8 @@ typedef struct	pieces
 	struct pieces	*next;
 }pieces_t;
 
+int     alphabetic(char *a, char *b);
+
 int     my_strlen(char *av);
 int	strcom(char *a, char *b);
 char	**feed_empty(char **av);
@@ -60,6 +62,7 @@ char	**open_function(char	*av);
 void    mv_from_there_all(pieces_t *list, pieces_t *a, char *dir_name);
 int     help(int ac, char **av);
 void    print_list(pieces_t *a);
+void    order_pieces(pieces_t **list, pieces_t *a);
 
 int	my_strcmp(char *pwd, char *line);
 int	my_put_nbr(int nb);

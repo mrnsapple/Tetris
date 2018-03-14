@@ -13,12 +13,14 @@ int	alphabetic(char *a, char *b)
 	//int	g;
 
 	for (i = 0; a[i] != '\0' && b[i] != '\0'; i++) {
-		if (a[i] > b[i])
+		if (a[i] > b[i]){
+			printf("jeje\n");
 			return (1);
-		if (a[i] < b[i])
+		}
+			if (a[i] < b[i])
 			return (0);
 	}
 	if (b[i] == '\0')
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
