@@ -107,12 +107,12 @@ int     feed_piece(pieces_t *a, char *name)
  	char    *file;
 	
 	file = file_name(name, size);
-	my_putchar('\n');
-	printf("name:%s\n", name);
-	my_putstr("file: ");
+	//my_putchar('\n');
+	//printf("name:%s\n", name);
+	//my_putstr("file: ");
 
-	my_putstr(file);
-	my_putstr("jej\n");
+	//my_putstr(file);
+	//my_putstr("jej\n");
 	a->name = delete_after_point(name);
 	my_putstr(name);//have here a problem, the name is not well puted in
 
