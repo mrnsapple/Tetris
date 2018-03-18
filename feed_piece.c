@@ -64,8 +64,8 @@ void	read_files(int fd, pieces_t *a)
 	}
 	//printf("y:%d\n", y);
 	a->map[y] = NULL;
-	for (int i = 0; a->map != NULL && a->map[i] != NULL; i++)
-		printf("mapito:%shuhu\n", a->map[i]);
+	//for (int i = 0; a->map != NULL && a->map[i] != NULL; i++)
+	//	printf("mapito:%shuhu\n", a->map[i]);
 	//printf("color:%c\n", a->color);
 }
 
@@ -108,31 +108,29 @@ int     feed_piece(pieces_t *a, char *name)
 	
 	file = file_name(name, size);
 	//my_putchar('\n');
-	//printf("name:%s\n", name);
+	printf("name:%s\n", name);
 	//my_putstr("file: ");
 
 	//my_putstr(file);
 	//my_putstr("jej\n");
 	a->name = delete_after_point(name);
-	my_putstr(name);//have here a problem, the name is not well puted in
+	//my_putstr(name);//have here a problem, the name is not well puted in
 
 	if (error_piece(file, a) == 0) {
 		a->size[0] = '0';
 		a->size[1] = '0';
 		a->map = NULL;
-		printf("error\n");
+		//	printf("error\n");
 		return (0);
 	}
         fd = open(file, O_RDONLY);//O_CREAT | O_RDWR | O_TRUNC, 0644);
         if (fd == -1) {
 		a->map = NULL;
-		printf("error2\n");			
+		//printf("error2\n");			
                 return (0);
 	}
-	//printf("name:%s\n\n\n", name);
 	read_files(fd, a);
-	printf("hehe\n");
-        return (1);
+	return (1);
 }
 
 void	feed_linked_list(pieces_t **a)
@@ -141,10 +139,10 @@ void	feed_linked_list(pieces_t **a)
 
 	while(list) {
 		feed_piece(list, list->dir_name);
-		for (int i = 0; list->map != NULL && list->map[i] != NULL; i++)
-			printf("map:%shuhu\n", list->map[i]);
+		//for (int i = 0; list->map != NULL && list->map[i] != NULL; i++)
+		//	printf("map:%shuhu\n", list->map[i]);
 		list = list->next;
-		printf("\ninloop\n");
+		//printf("\ninloop\n");
 		       
 		
 
