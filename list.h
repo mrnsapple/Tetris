@@ -67,7 +67,7 @@ void    mv_from_there_all(pieces_t *list, pieces_t *a, char *dir_name);
 int     help(int ac, char **av);
 void    print_list(pieces_t *a);
 void    order_pieces(pieces_t **list, pieces_t *a);
-void    feed_linked_list(pieces_t *a);
+void    feed_linked_list(pieces_t **a);
 
 int	my_strcmp(char *pwd, char *line);
 int	my_put_nbr(int nb);

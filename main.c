@@ -89,8 +89,13 @@ int	debug_tetrimino(pieces_t *a)
 			my_putstr(" :  Color ");
 			my_putchar(a->color);
 			my_putstr(" :\n");
+			for (int y = 0; a->map != NULL &&  a->map[y] != NULL; y++) {
+				my_putstr(a->map[y]);
+				my_putchar('\n');
+			}
 		}
 		a = a->next;
+		
 	}
 	return (0);
 }
@@ -114,7 +119,7 @@ int	main(int ac, char **av)
 	a = get_pieces(a);
 	order_pieces(&a, a);
 	print_list(a);
-	feed_linked_list(a);
+	feed_linked_list(&a);
 	debug_mode(ac, av, a);
 	free(a);
 }
