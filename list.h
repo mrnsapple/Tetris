@@ -41,6 +41,19 @@ typedef	struct	each
 	char	*name;
 }each;
 
+typedef struct debug
+{
+	char	*left;
+	char	*right;
+	char	*turn;
+	char	*drop;
+	char	*quit;
+	char	*pause;
+	char	*next;
+	char	*level;
+	char	*size;
+}debug_t;
+	
 typedef struct	pieces
 {
 	char		color;

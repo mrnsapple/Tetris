@@ -75,6 +75,7 @@ pieces_t	*get_pieces(pieces_t *a)
 
 int	debug_tetrimino(pieces_t *a)
 {
+	
 	while(a) {
 		my_putstr("Tetrimino :  Name ");
 		my_putstr(a->name);
@@ -103,12 +104,25 @@ int	debug_tetrimino(pieces_t *a)
 void	debug_mode(int ac, char **av, pieces_t *a)
 {
 	int	i;
+	debug_t	*debug;
 
+	debug = malloc(sizeof(debug_t));
 	for (i = ac -1; i != 0; i--)
 		if (strcom("-D", av[i]) == 1) {
-			my_putstr("debug_modeon\n");
+			my_putstr("*** DEBUG MODE ***");
+			my_putstr("\nKey Left :  ");
+			my_putstr("\nKey Right :  ");
+			my_putstr("\nKey Turn :  ");
+			my_putstr("\nKey Drop :  ");
+			my_putstr("\nKey Quit :  ");
+			my_putstr("\nKey Pause :  ");
+			my_putstr("\nNext :  ");
+			my_putstr("\nLevel :  ");
+			my_putstr("\nSize :  ");
+			my_putstr("\n");
 			debug_tetrimino(a);
 		}
+	free(debug);
 }
 
 int	main(int ac, char **av)
