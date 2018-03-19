@@ -21,6 +21,7 @@
 #include <sys/stat.h>
 #include <errno.h>
 #include <dirent.h>
+#include <getopt.h>
 
 #ifndef LIST_H_
 #define LIST_H_
@@ -50,6 +51,7 @@ typedef struct debug
 	char	*quit;
 	char	*pause;
 	char	*next;
+	char	*map_size;
 	char	*level;
 	char	*size;
 }debug_t;
@@ -63,6 +65,8 @@ typedef struct	pieces
 	char		*dir_name;
 	struct pieces	*next;
 }pieces_t;
+int     getopt_use(int ac, char **av, debug_t *debug);
+void    print_debug(debug_t *a, debug_t *b);
 
 int     alphabetic(char *a, char *b);
 char    *file_name(char *name, int i);

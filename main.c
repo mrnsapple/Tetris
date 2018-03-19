@@ -101,38 +101,86 @@ int	debug_tetrimino(pieces_t *a)
 	return (0);
 }
 
+debug_t	*initialize_debug(void)
+{
+	debug_t	*a;
+
+	a = malloc(sizeof(debug_t));
+	a->left = "left arrow";
+        a->right = "right arrow";
+        a->turn = "top";
+        a->drop = "down arrow";
+	a->quit = "q";
+        a->pause = "space bar";
+	a->next = "false";
+        a->level = "1";
+        a->size = "20*10";
+	return (a);
+}
+
+debug_t	*initialize_debug_text(void)
+{
+	debug_t	*a;
+
+	a = malloc(sizeof(debug_t));
+	a->left = "\nKey Left :  ";
+        a->right = "\nKey Right :  ";
+        a->turn = "\nKey Turn :  "; 
+        a->drop = "\nKey Drop :  "; 
+	a->quit = "\nKey Quit :  "; 
+        a->pause = "\nKey Pause :  ";
+	a->next = "\nNext :  "; 
+        a->level = "\nLevel :  ";
+        a->size = "\nSize :  ";
+	return (a);
+}
+//void	transform_debug
 void	debug_mode(int ac, char **av, pieces_t *a)
 {
 	int	i;
 	debug_t	*debug;
+	//int	c;
+	//char	*filename;
+	debug_t	*debug_text;
 
-	debug = malloc(sizeof(debug_t));
+	debug_text = initialize_debug_text();
+	debug = initialize_debug();
+	getopt_use(ac, av, debug);
+	/*while ((c = getopt(ac, av,":abf:")) != -1) {
+		printf("c:%d\n", c);
+		filename = NULL;
+		if (c == 'f')
+			filename = optarg;
+		printf("filename:%s\n", filename);
+		//if (c == 'D')
+		}*/
 	for (i = ac -1; i != 0; i--)
 		if (strcom("-D", av[i]) == 1) {
 			my_putstr("*** DEBUG MODE ***");
-			my_putstr("\nKey Left :  ");
-			my_putstr("\nKey Right :  ");
-			my_putstr("\nKey Turn :  ");
-			my_putstr("\nKey Drop :  ");
-			my_putstr("\nKey Quit :  ");
-			my_putstr("\nKey Pause :  ");
-			my_putstr("\nNext :  ");
-			my_putstr("\nLevel :  ");
-			my_putstr("\nSize :  ");
+			print_debug(debug_text, debug);
+			//print_debug(debug);
+			//print_debug(debug_text, debug);
 			my_putstr("\n");
 			debug_tetrimino(a);
 		}
 	free(debug);
+	free(debug_text);
 }
 
 int	main(int ac, char **av)
 {
 	pieces_t	*a = NULL;
 
+	//char		opt;
+
+	
+	//while ((opt = getopt(ac, av, "nt:help")) != -1) {
+	//	printf("opt:%d\n", opt);
+	//}
 	help(ac, av);
 	a = get_pieces(a);
 	order_pieces(&a, a);
-	print_list(a);
+	//print_list(a);
 	feed_linked_list(&a);
 	debug_mode(ac, av, a);
 	free(a);
