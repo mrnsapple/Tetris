@@ -13,7 +13,7 @@ char    *file_name(char *name, int i)
  	char    *a = "tetriminos/";
 	int     g;
 
-        file = malloc(sizeof(char) * (my_strlen(name) + 11));
+	file = malloc(sizeof(char) * (my_strlen(name) + 25));
         for (i = 0; a[i] != '\0'; i++)
                 file[i] = a[i];
         for (g = 0, i = i; name[g] != '\0'; g++, i++)
@@ -45,7 +45,6 @@ void	read_files(int fd, pieces_t *a)
 			i++;
 		if ((i == 0 || i == 1) && buff[0] != ' ')
 			a->size[i] = buff[0];
-		//printf("i:%d,buf:%c\n", i, buff[0]);
 		if (i == 2 && buff[0] != ' ' && buff[0] != '\n')
 			a->color = buff[0];
 		if (y != -1) {
@@ -58,15 +57,9 @@ void	read_files(int fd, pieces_t *a)
 			y++;
 			i++;
 			x = 0;
-			//printf("x:%d\n", x);
 		}
-		//printf("buf:%c\n", buff[0]);
 	}
-	//printf("y:%d\n", y);
 	a->map[y] = NULL;
-	//for (int i = 0; a->map != NULL && a->map[i] != NULL; i++)
-	//	printf("mapito:%shuhu\n", a->map[i]);
-	//printf("color:%c\n", a->color);
 }
 
 int	error_piece(char *file, pieces_t *a)
@@ -76,7 +69,7 @@ int	error_piece(char *file, pieces_t *a)
 	int	y = 0;
 	char    buff[1];
 	int	x[2] = {0,0};
-	
+
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
                 return (0);
@@ -105,10 +98,10 @@ int     feed_piece(pieces_t *a, char *name)
  	int     fd;
 	int	size = 0;
  	char    *file;
-	
+
+//	my_putstr(name);
+
 	file = file_name(name, size);
-	//my_putchar('\n');
-	printf("name:%s\n", name);
 	a->name = delete_after_point(name);
 	if (error_piece(file, a) == 0) {
 		a->size[0] = '0';
@@ -128,9 +121,16 @@ int     feed_piece(pieces_t *a, char *name)
 void	feed_linked_list(pieces_t **a)
 {
 	pieces_t	*list = *a;
-
+	char		*n;
 	while(list) {
-		feed_piece(list, list->dir_name);
+		printf("first:");
+		//printf("name:%s\n", list->dir_name);
+		for(int i = 0; list->dir_name[i] != '\0'; i++)
+			printf("i:%d\n", i);
+		n = list->dir_name;
+		feed_piece(list, n);
+		printf("hoho\n");
+
 		list = list->next;
 	}
 }
