@@ -60,7 +60,7 @@ int	transform_debug(int c,int option_index, debug_t *debug)
 	if (c == 'd')
 		debug->drop = flag;
 	transform_debug_second(flag, c ,option_index, debug);
-	printf("filename:%s\n", flag);
+	//printf("filename:%s\n", flag);
 	return (0);
 }
 
@@ -89,7 +89,7 @@ int	getopt_use(int ac, char **av, debug_t *debug)
 		if (long_options[option_index].flag != 0)
 			return (0);
 
-		printf("c:%d\n", c);
+		//printf("c:%d\n", c);
 		transform_debug(c,option_index, debug);
 	}
 	
