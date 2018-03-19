@@ -109,7 +109,7 @@ int     feed_piece(pieces_t *a, char *name)
 		a->map = NULL;
 		return (0);
 	}
-        fd = open(file, O_RDONLY);//O_CREAT | O_RDWR | O_TRUNC, 0644);
+        fd = open(file, O_RDONLY, 0644);//O_CREAT | O_RDWR | O_TRUNC, 0644);
         if (fd == -1) {
 		a->map = NULL;
                 return (0);
@@ -122,6 +122,7 @@ void	feed_linked_list(pieces_t **a)
 {
 	pieces_t	*list = *a;
 	char		*n;
+	rand();
 	printf(" ");
 	while(list) {
 		n = list->dir_name;
