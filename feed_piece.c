@@ -122,15 +122,10 @@ void	feed_linked_list(pieces_t **a)
 {
 	pieces_t	*list = *a;
 	char		*n;
+	printf(" ");
 	while(list) {
-		printf("first:");
-		//printf("name:%s\n", list->dir_name);
-		for(int i = 0; list->dir_name[i] != '\0'; i++)
-			printf("i:%d\n", i);
 		n = list->dir_name;
 		feed_piece(list, n);
-		printf("hoho\n");
-
 		list = list->next;
 	}
 }
