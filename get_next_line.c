@@ -37,7 +37,7 @@ int	is_line(char *str, int n)
 	}
 	return (0);
 }
-
+/*
 char	*reallocate(char *str, int count)
 {
 	char	*ptr;
@@ -49,7 +49,7 @@ char	*reallocate(char *str, int count)
 	free(str);
 	return (ptr);
 }
-
+*/
 char	*main_loop(int fd, int count,char *str,char **buffer)
 {
  	int	size;
@@ -93,5 +93,6 @@ char	*get_next_line(int fd)
 	str[count] = '\0';
 	buffer = malloc(sizeof(char) * BUFF);
 	str = main_loop(fd, count, str, &buffer);
+	free(buffer);
 	return (str);
 }

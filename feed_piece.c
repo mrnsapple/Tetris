@@ -99,8 +99,6 @@ int     feed_piece(pieces_t *a, char *name)
 	int	size = 0;
  	char    *file;
 
-//	my_putstr(name);
-
 	file = file_name(name, size);
 	a->name = delete_after_point(name);
 	if (error_piece(file, a) == 0) {
@@ -115,6 +113,7 @@ int     feed_piece(pieces_t *a, char *name)
                 return (0);
 	}
 	read_files(fd, a);
+	free(file);
 	return (1);
 }
 
@@ -122,8 +121,8 @@ void	feed_linked_list(pieces_t **a)
 {
 	pieces_t	*list = *a;
 	char		*n;
+
 	rand();
-	printf(" ");
 	while(list) {
 		n = list->dir_name;
 		feed_piece(list, n);

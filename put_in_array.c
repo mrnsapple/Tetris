@@ -12,7 +12,7 @@ char	**malloca(int num_ar, int cha)
 	int	fd;
 
 	pwd = malloc(sizeof(char *) * (num_ar + 1));
-	for (fd = 0; fd < num_ar + 2; fd++)
+	for (fd = 0; fd < num_ar + 1; fd++)
 		pwd[fd] = malloc(sizeof(char) * (cha + 1));
 	return (pwd);
 }

@@ -69,7 +69,7 @@ pieces_t	*get_pieces(pieces_t *a)
 			place_dir_name_list(&a, a, buff->d_name);
 		}
 	}
-	closedir(fd);
+//	closedir(fd);
 	return (a);	
 }
 
