@@ -11,10 +11,19 @@ void	add_piece(char **av, char **reference,pieces_t *a)
 {
 	int	i = 0;
 
-	for (int y = 0; av[y] != NULL; y++)
-		for (int x = 0; av[y][x] != '\0'; x++)
-			if (av[y][x] == '*')
+	for (int y = 0; reference[y] != NULL; y++)
+		for (int x = 0; reference[y][x] != '\0'; x++)
+			if (reference[y][x] == '*')
 				i = 1;
 	printf("i:%d\n", i);
-	//if (i == 0)//its needed to add another piece
+	if (i == 0) {
+		for (int y = 0; a->map[y] != NULL; y++)
+			for (int x = 0; a->map[y][x] != '\0'; x++) {
+				av[y + 1][x + 1] = a->map[y][x];
+				reference[y + 1][x + 1] = a->map[y][x];
+			}
+	}
+	//print_map(av);
+	
+//its needed to add another piece
 }

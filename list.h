@@ -82,6 +82,7 @@ char    *file_name(char *name, int i);
 int     feed_piece(pieces_t *a, char *name);
 char	**malloca(int num_ar, int cha);
 int **int_malloca(int num_ar, int cha);
+void    print_map(char **av);
 
 int     my_strlen(char *av);
 int	strcom(char *a, char *b);
