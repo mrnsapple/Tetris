@@ -4,7 +4,8 @@
 ** File description:
 ** 
 */
-#include "list.h"
+
+#include "../list.h"
 
 char	**malloca(int num_ar, int cha)
 {
