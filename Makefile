@@ -7,12 +7,12 @@
 
 SRC 	=	main.c			\
 		help.c			\
-		my_puts.c		\
-		my_put_nbr.c		\
-		linked_list.c		\
-		alphabetic.c		\
+		my_puts/my_puts.c		\
+		my_puts/my_put_nbr.c		\
+		list/linked_list.c		\
+		list/alphabetic.c		\
 		feed_piece.c		\
-		put_in_array.c		\
+		my_puts/put_in_array.c		\
 		ncurse.c		\
 		debug.c			
 
