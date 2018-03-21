@@ -169,6 +169,8 @@ int	main(int ac, char **av)
 	//print_list(a);
 	feed_linked_list(&a);
 	debug_mode(ac, av, a);
+	my_putstr("Press any key to start Tetris\n");
+	start_game();
 	free(a);
 	return (0);
 }
