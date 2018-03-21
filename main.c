@@ -139,7 +139,7 @@ debug_t	*initialize_debug_text(void)
 	return (a);
 }
 
-void	debug_mode(int ac, char **av, pieces_t *a)
+debug_t	*debug_mode(int ac, char **av, pieces_t *a)
 {
 	int	i;
 	debug_t	*debug;
@@ -151,13 +151,15 @@ void	debug_mode(int ac, char **av, pieces_t *a)
 	for (i = ac -1; i != 0; i--)
 		if (strcom("-D", av[i]) == 1)
 			n_curing(a, debug, debug_text);
-	free(debug);
+	//free(debug);
 	free(debug_text);
+	return (debug);
 }
 
 int	main(int ac, char **av)
 {
 	pieces_t	*a = NULL;
+	debug_t		*debug = NULL;
 
 	for (int i = ac -1; i != 0; i--)
 		if (strcom("--help", av[i]) == 1) {
@@ -168,9 +170,9 @@ int	main(int ac, char **av)
 	order_pieces(&a, a);
 	//print_list(a);
 	feed_linked_list(&a);
-	debug_mode(ac, av, a);
+	debug = debug_mode(ac, av, a);
 	my_putstr("Press any key to start Tetris\n");
-	start_game();
+	start_game(debug, a);
 	free(a);
 	return (0);
 }
