@@ -148,16 +148,9 @@ void	debug_mode(int ac, char **av, pieces_t *a)
 	debug_text = initialize_debug_text();
 	debug = initialize_debug();
 	getopt_use(ac, av, debug);
-	for (i = ac -1; i != 0; i--) {
-	
-		if (strcom("-D", av[i]) == 1) {
-			my_putstr("*** DEBUG MODE ***");
-			print_debug(debug_text, debug);
-			my_putstr("\n");
-			print_pieces_number(a);
-			debug_tetrimino(a);
-		}
-	}
+	for (i = ac -1; i != 0; i--)
+		if (strcom("-D", av[i]) == 1)
+			n_curing(a, debug, debug_text);
 	free(debug);
 	free(debug_text);
 }
@@ -177,5 +170,11 @@ int	main(int ac, char **av)
 	feed_linked_list(&a);
 	debug_mode(ac, av, a);
 	free(a);
+	initscr();                      /* Start curses mode              */
+	printw("Hello World !!!");      /* Print Hello World              */
+        refresh();                      /* Print it on to the real screen */
+        getch();                        /* Wait for user input */
+        endwin();                       /* End curses mode                */
+
 	return (0);
 }

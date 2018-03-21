@@ -13,7 +13,8 @@ SRC 	=	main.c			\
 		alphabetic.c		\
 		feed_piece.c		\
 		put_in_array.c		\
-		debug.c
+		ncurse.c		\
+		debug.c			
 
 OBJ	=	$(SRC:.c=.o)
 
