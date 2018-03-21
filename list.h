@@ -65,6 +65,8 @@ typedef struct	pieces
 	char		*dir_name;
 	struct pieces	*next;
 }pieces_t;
+void    print_array(char **map);
+
 int     getopt_use(int ac, char **av, debug_t *debug);
 void    print_debug(debug_t *a, debug_t *b);
 

@@ -27,3 +27,12 @@ int **int_malloca(int num_ar, int cha)
 		pwd[fd] = malloc(sizeof(int) * (cha + 1));
 	return (pwd);
 }
+
+void	print_array(char **map)
+{
+	for (int y = 0; map != NULL && map[y] != NULL; y++) {
+		my_putstr(map[y]);
+		my_putchar('\n');
+	}
+}
+	

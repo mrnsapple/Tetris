@@ -97,10 +97,7 @@ int	debug_tetrimino(pieces_t *a)
 			my_putstr(" :  Color ");
 			my_putchar(a->color);
 			my_putstr(" :\n");
-			for (int y = 0; a->map != NULL &&  a->map[y] != NULL; y++) {
-				my_putstr(a->map[y]);
-				my_putchar('\n');
-			}
+			print_array(a->map);
 		}
 		a = a->next;
 		
@@ -141,7 +138,7 @@ debug_t	*initialize_debug_text(void)
         a->size = "\nSize :  ";
 	return (a);
 }
-//void	transform_debug
+
 void	debug_mode(int ac, char **av, pieces_t *a)
 {
 	int	i;
