@@ -73,15 +73,22 @@ pieces_t	*get_pieces(pieces_t *a)
 	return (a);	
 }
 
+void	print_pieces_number(pieces_t *a)
+{
+	char	i;
+
+	for (i = '0'; a != NULL; i++, a = a->next);
+	my_putstr("Tetrimino :  ");
+	my_putchar(i);
+	my_putchar('\n');
+}
 int	debug_tetrimino(pieces_t *a)
 {
-	
 	while(a) {
 		my_putstr("Tetrimino :  Name ");
 		my_putstr(a->name);
-		if (a->size[0] == '0' && a->size[1] == '0') {
+		if (a->size[0] == '0' && a->size[1] == '0')
 			my_putstr(" :  Error\n");
-		}
 		else {
 			my_putstr(" :  Size ");
 			my_putchar(a->size[0]);
@@ -139,32 +146,21 @@ void	debug_mode(int ac, char **av, pieces_t *a)
 {
 	int	i;
 	debug_t	*debug;
-	//int	c;
-	//char	*filename;
 	debug_t	*debug_text;
-
+	
 	debug_text = initialize_debug_text();
 	debug = initialize_debug();
 	getopt_use(ac, av, debug);
-	/*while ((c = getopt(ac, av,":abf:")) != -1) {
-		printf("c:%d\n", c);
-		filename = NULL;
-		if (c == 'f')
-			filename = optarg;
-		printf("filename:%s\n", filename);
-		//if (c == 'D')
-		}*/
 	for (i = ac -1; i != 0; i--) {
+	
 		if (strcom("-D", av[i]) == 1) {
 			my_putstr("*** DEBUG MODE ***");
 			print_debug(debug_text, debug);
-			//print_debug(debug);
-			//print_debug(debug_text, debug);
 			my_putstr("\n");
+			print_pieces_number(a);
 			debug_tetrimino(a);
 		}
-		if (strcom("--help", av[i]) == 1)
-			help(ac, av);
+	}
 	free(debug);
 	free(debug_text);
 }
@@ -173,17 +169,16 @@ int	main(int ac, char **av)
 {
 	pieces_t	*a = NULL;
 
-	//char		opt;
-
-	
-	//while ((opt = getopt(ac, av, "nt:help")) != -1) {
-	//	printf("opt:%d\n", opt);
-	//}
-
+	for (int i = ac -1; i != 0; i--)
+		if (strcom("--help", av[i]) == 1) {
+			help(ac, av);
+			return (0);
+		}
 	a = get_pieces(a);
 	order_pieces(&a, a);
 	//print_list(a);
 	feed_linked_list(&a);
 	debug_mode(ac, av, a);
 	free(a);
+	return (0);
 }
