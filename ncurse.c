@@ -63,7 +63,7 @@ void	start_game(void)//should have a, debug and debug_text
 		printw("\n");
 	}
 	refresh();    /* Print it on to the real screen */
-	getch();           /* Wait for user input */
+	//getch();           /* Wait for user input */
 	endwin();
 	noecho();
 	keypad(stdscr, TRUE);
