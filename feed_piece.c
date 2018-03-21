@@ -31,6 +31,14 @@ char	*delete_after_point(char *name)
 	return (name);
 }
 
+void	read_files_next_line(int *y, int *i, int *x, pieces_t *a)
+{
+	if (*y != -1)
+		a->map[*y][*x - 1] = '\0';
+	(*y)++;
+	(*i)++;
+	*x = 0;
+}
 void	read_files(int fd, pieces_t *a)
 {
 	int	size;
@@ -41,6 +49,7 @@ void	read_files(int fd, pieces_t *a)
 	
 	for (size = read(fd, buff, 1); size > 0;
              size = read(fd, buff, 1)) {
+		
 		if (buff[0] == ' ')
 			i++;
 		if ((i == 0 || i == 1) && buff[0] != ' ')
@@ -51,13 +60,8 @@ void	read_files(int fd, pieces_t *a)
 			a->map[y][x] = buff[0];
 			x++;
 		}
-		if (buff[0] == '\n') {
-			if (y != -1)
-				a->map[y][x - 1] = '\0';
-			y++;
-			i++;
-			x = 0;
-		}
+		if (buff[0] == '\n')
+			read_files_next_line(&y, &i, &x, a);
 	}
 	a->map[y] = NULL;
 }

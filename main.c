@@ -154,7 +154,7 @@ void	debug_mode(int ac, char **av, pieces_t *a)
 		printf("filename:%s\n", filename);
 		//if (c == 'D')
 		}*/
-	for (i = ac -1; i != 0; i--)
+	for (i = ac -1; i != 0; i--) {
 		if (strcom("-D", av[i]) == 1) {
 			my_putstr("*** DEBUG MODE ***");
 			print_debug(debug_text, debug);
@@ -163,6 +163,8 @@ void	debug_mode(int ac, char **av, pieces_t *a)
 			my_putstr("\n");
 			debug_tetrimino(a);
 		}
+		if (strcom("--help", av[i]) == 1)
+			help(ac, av);
 	free(debug);
 	free(debug_text);
 }
@@ -177,7 +179,7 @@ int	main(int ac, char **av)
 	//while ((opt = getopt(ac, av, "nt:help")) != -1) {
 	//	printf("opt:%d\n", opt);
 	//}
-	help(ac, av);
+
 	a = get_pieces(a);
 	order_pieces(&a, a);
 	//print_list(a);
