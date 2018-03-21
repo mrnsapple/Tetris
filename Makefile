@@ -5,16 +5,17 @@
 ##
 ##
 
-SRC 	=	main.c			\
-		help.c			\
+SRC 	=	main.c				\
+		help.c				\
 		my_puts/my_puts.c		\
 		my_puts/my_put_nbr.c		\
 		list/linked_list.c		\
 		list/alphabetic.c		\
-		feed_piece.c		\
+		feed_piece.c			\
 		my_puts/put_in_array.c		\
-		ncurse.c		\
-		debug.c			
+		ncurse.c			\
+		debug.c				\
+		add_piece.c
 
 OBJ	=	$(SRC:.c=.o)
 

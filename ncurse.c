@@ -93,18 +93,19 @@ void	start_game(debug_t *debug, pieces_t *a)
 	char	**av;
 	int	win = 0;
 	int	ch;
-//	char	**reference;
-	//int     g = clock();
+	char	**reference;
+	//int     clock;/ = clock();
 	//printf("i:%d\n", g);
 	create_circular_list(a, &a);
 	av = create_square(20, 20);
-//	reference = create_square(20, 20);
+	reference = create_square(20, 20);
 	getchar();
 	initscr();
 	while (win == 0) {
 		start_color();
 		init_pair(2, COLOR_GREEN, COLOR_BLACK);
 		attron(COLOR_PAIR(2));
+		add_piece(av,reference, a);
 		print_map(av);
 		print_map(a->map);
 		ch = ncurse_stuff();

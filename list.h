@@ -65,6 +65,8 @@ typedef struct	pieces
 	char		*dir_name;
 	struct pieces	*next;
 }pieces_t;
+void    add_piece(char **av, char **reference,pieces_t *a);
+
 void    print_pieces_number(pieces_t *a);
 void	print_debug(debug_t *a, debug_t *b);
 int     debug_tetrimino(pieces_t *a);
