@@ -87,7 +87,13 @@ int	ncurse_stuff(void)
 	clear();
 	return (ch);
 }
-
+void	print_maps(char **a, char **b, char **c)
+{
+	print_map(a);
+	print_map(b);
+	print_map(c);
+}
+	
 void	start_game(debug_t *debug, pieces_t *a)
 {
 	char	**av;
@@ -103,12 +109,10 @@ void	start_game(debug_t *debug, pieces_t *a)
 	initscr();
 	while (win == 0) {
 		start_color();
-		init_pair(2, COLOR_GREEN, COLOR_BLACK);
+		init_pair(2, COLOR_WHITE, COLOR_BLACK);
 		attron(COLOR_PAIR(2));
 		add_piece(av,reference, a, &a);
-		print_map(av);
-		print_map(reference);
-		print_map(a->map);
+		print_maps(av, reference, a->next->map);
 		ch = ncurse_stuff();
 		if (ch == 'r')
 			win = 1;
