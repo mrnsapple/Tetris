@@ -65,6 +65,9 @@ typedef struct	pieces
 	char		*dir_name;
 	struct pieces	*next;
 }pieces_t;
+//game
+int     gameplay(int ch, char **reference, char **av, pieces_t *a);
+
 void    add_piece(char **av, char **reference,pieces_t *a, pieces_t **b);
 
 void    print_pieces_number(pieces_t *a);

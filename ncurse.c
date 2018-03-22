@@ -5,7 +5,6 @@
 ** dk
 */
 
-
 #include <stdlib.h>
 #include <curses.h>
 #include <sys/types.h>
@@ -41,9 +40,6 @@ char	**create_square(int y, int x)
 				av[i][g]  = '_';
 			else
 				av[i][g] = ' ';
-			//if ((g == 0 && i == 0) || (g == x -1 && i == y - 1))
-			//	av[i][g] = 'f';
-
 		}
 	}
 	av[i] = NULL;
@@ -87,6 +83,7 @@ int	ncurse_stuff(void)
 	clear();
 	return (ch);
 }
+
 void	print_maps(char **a, char **b, char **c)
 {
 	print_map(a);
@@ -102,6 +99,7 @@ void	start_game(debug_t *debug, pieces_t *a)
 	char	**reference;
 	int     clok;// = clock();
 
+	printf("right:%d\n", KEY_RIGHT);
 	create_circular_list(a, &a);
 	av = create_square(20, 20);
 	reference = create_square(20, 20);
@@ -118,9 +116,7 @@ void	start_game(debug_t *debug, pieces_t *a)
 		print_maps(av, reference, a->next->map);
 		ch = ncurse_stuff();
 		while(clok + 300000 > clock());
-			
-		if (ch == 27)
-			win = 1;
+		gameplay(ch, reference, av, a);
 		//a = a->next;
 	}
 	endwin();

@@ -15,7 +15,8 @@ SRC 	=	main.c				\
 		my_puts/put_in_array.c		\
 		ncurse.c			\
 		debug.c				\
-		add_piece.c
+		add_piece.c			\
+		gameplay.c
 
 OBJ	=	$(SRC:.c=.o)
 
