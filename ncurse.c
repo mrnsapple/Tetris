@@ -77,7 +77,7 @@ void	print_map(char **av)
 
 int	ncurse_stuff(void)
 {
-	int	ch;
+	int	ch = 0;
 
 	refresh();    /* Print it on to the real screen */
 	ch = getch();           /* Wait for user input */
@@ -100,21 +100,26 @@ void	start_game(debug_t *debug, pieces_t *a)
 	int	win = 0;
 	int	ch;
 	char	**reference;
-	//int     clock;/ = clock();
-	//printf("i:%d\n", g);
+	int     clok;// = clock();
+
 	create_circular_list(a, &a);
 	av = create_square(20, 20);
 	reference = create_square(20, 20);
 	getchar();
 	initscr();
+	cbreak();         // don't interrupt for user input
+	timeout(200);
 	while (win == 0) {
+		clok = clock();
 		start_color();
 		init_pair(2, COLOR_WHITE, COLOR_BLACK);
 		attron(COLOR_PAIR(2));
 		add_piece(av,reference, a, &a);
 		print_maps(av, reference, a->next->map);
 		ch = ncurse_stuff();
-		if (ch == 'r')
+		while(clok + 300000 > clock());
+			
+		if (ch == 27)
 			win = 1;
 		//a = a->next;
 	}
