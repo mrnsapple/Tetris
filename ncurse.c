@@ -101,7 +101,6 @@ void	start_game(debug_t *debug, pieces_t *a)
 	reference = create_square(20, 20);
 	getchar();
 	initscr();
-	a =a->next;
 	while (win == 0) {
 		start_color();
 		init_pair(2, COLOR_GREEN, COLOR_BLACK);
