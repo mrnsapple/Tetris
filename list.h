@@ -66,6 +66,8 @@ typedef struct	pieces
 	struct pieces	*next;
 }pieces_t;
 //game
+char    **create_square(int y, int x, char **av);
+
 void    delete_complete_line(char **av, char **reference);
 int     gameplay(int ch, char **reference, char **av, pieces_t *a);
 

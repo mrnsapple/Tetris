@@ -83,6 +83,11 @@ void	add_piece(char **av, char **reference, pieces_t *a, pieces_t **b)
 	if (i == 0) {
 		for (int y = 0; (*b)->map[y] != NULL; y++)
 			for (int x = 0; (*b)->map[y][x] != '\0'; x++) {
+				if (av[y + 1][x + 1] == '*') {
+					av = create_square(20, 20, av);
+					reference = create_square(20, 20, reference);
+					y = 0; x = 0;
+				}
 				av[y + 1][x + 1] = (*b)->map[y][x];
 				reference[y + 1][x + 1] = (*b)->map[y][x];
 			}

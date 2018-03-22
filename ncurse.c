@@ -24,12 +24,10 @@ void	n_curing(pieces_t *a, debug_t *debub, debug_t *debug_text)
 	debug_tetrimino(a);
 }
 
-char	**create_square(int y, int x)
+char	**create_square(int y, int x, char **av)
 {
-	char	**av;
 	int	i;
 
-	av = malloca(y, x);
 	for (i = 0; i != y; i++) {
 		for (int g = 0; g != x; g++) {
 			if (g == 0 || g == x - 1)
@@ -101,12 +99,14 @@ void	start_game(debug_t *debug, pieces_t *a)
 
 	printf("right:%d\n", KEY_RIGHT);
 	create_circular_list(a, &a);
-	av = create_square(20, 20);
-	reference = create_square(20, 20);
+	av = malloca(20, 20);
+	reference = malloca(20, 20);
+	av = create_square(20, 20, av);
+	reference = create_square(20, 20, reference);
 	getchar();
 	initscr();
 	cbreak();         // don't interrupt for user input
-	timeout(200);
+	timeout(500);
 	while (win == 0) {
 		clok = clock();
 		start_color();
