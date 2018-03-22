@@ -11,7 +11,8 @@ SRC 	=	main.c				\
 		my_puts/my_put_nbr.c		\
 		list/linked_list.c		\
 		list/alphabetic.c		\
-		feed_piece.c			\
+		pieces/second_feed.c		\
+		pieces/feed_pieces.c		\
 		my_puts/put_in_array.c		\
 		ncurse.c			\
 		debug.c				\

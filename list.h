@@ -72,6 +72,11 @@ int     gameplay(int ch, char **reference, char **av, pieces_t *a);
 
 void    add_piece(char **av, char **reference,pieces_t *a, pieces_t **b);
 int     number_stars(char **reference);
+char    *file_name(char *name, int i);
+char    *delete_after_point(char *name);
+void    read_files_next_line(int *y, int *i, int *x, pieces_t *a);
+void    read_files(int fd, pieces_t *a);
+int     errors(int y, char buff, int *x);
 
 void    print_pieces_number(pieces_t *a);
 void	print_debug(debug_t *a, debug_t *b);
