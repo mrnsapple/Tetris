@@ -29,7 +29,8 @@ void	print_debug(debug_t *a, debug_t *b)
 	my_putstr(b->size);
 }
 
-void	transform_debug_second(char *flag, int c,int option_index, debug_t *debug) {
+void	transform_debug_second(char *flag, int c,
+			       int option_index, debug_t *debug) {
 	if (c == 'q')
 		debug->quit = flag;
 	if (c == 'p')
@@ -59,17 +60,15 @@ int	transform_debug(int c,int option_index, debug_t *debug)
 		debug->turn = flag;
 	if (c == 'd')
 		debug->drop = flag;
-	transform_debug_second(flag, c ,option_index, debug);
-	//printf("filename:%s\n", flag);
+	transform_debug_second(flag, c , option_index, debug);
 	return (0);
 }
 
 int	getopt_use(int ac, char **av, debug_t *debug)
 {
-	//int	i;
 	int	option_index = 0;
 	int	c;	
-
+	
 	static struct option long_options[] =
 		{
 			{"level", required_argument, 0, 'L'},
@@ -88,11 +87,8 @@ int	getopt_use(int ac, char **av, debug_t *debug)
 				&option_index)) != -1) {
 		if (long_options[option_index].flag != 0)
 			return (0);
-
-		//printf("c:%d\n", c);
-		transform_debug(c,option_index, debug);
+		transform_debug(c, option_index, debug);
 	}
-	
 	return (0);
 }
 	
