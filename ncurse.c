@@ -106,13 +106,14 @@ void	start_game(debug_t *debug, pieces_t *a)
 		start_color();
 		init_pair(2, COLOR_GREEN, COLOR_BLACK);
 		attron(COLOR_PAIR(2));
-		add_piece(av,reference, a);
+		add_piece(av,reference, a, &a);
 		print_map(av);
+		print_map(reference);
 		print_map(a->map);
 		ch = ncurse_stuff();
 		if (ch == 'r')
 			win = 1;
-		a = a->next;
+		//a = a->next;
 	}
 	endwin();
 }
