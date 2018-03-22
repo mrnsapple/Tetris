@@ -161,7 +161,7 @@ void	feed_linked_list(pieces_t **a)
 	}
 	list = *a;
 	while (list) {
-		//good_lines_and_rows_num(list, list->map);
+		good_lines_and_rows_num(list, list->map);
 		list = list->next;
 	}
 }
