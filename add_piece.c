@@ -58,8 +58,8 @@ void	add_piece(char **av, char **reference, pieces_t *a, pieces_t **b)
 	char	*de;
 	int	piece_stars;
 
-	printw("name\n");
-	printw(a->name);
+	//printw("name\n");
+	//printw(a->name);
 	de = malloc(sizeof(char) * 3);
 	i = number_stars(reference);
 	piece_stars = number_stars((*b)->map);

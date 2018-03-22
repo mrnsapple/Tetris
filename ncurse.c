@@ -82,11 +82,22 @@ int	ncurse_stuff(void)
 	return (ch);
 }
 
-void	print_maps(char **a, char **b, char **c)
+void	print_maps(char **a, char **b, char **c, char score)
 {
+	char	*de;
+
+	de = malloc(sizeof(char) * 3);
+	de[0] = score;
+	de[1] = '\0';
 	print_map(a);
 	print_map(b);
+	
+	printw("SCORE  : ");
+	printw(de);
+	printw("\n");
+	printw("NEXT PIECE  :\n");
 	print_map(c);
+	free(de);
 }
 	
 void	start_game(debug_t *debug, pieces_t *a)
@@ -96,7 +107,8 @@ void	start_game(debug_t *debug, pieces_t *a)
 	int	ch;
 	char	**reference;
 	int     clok;
-
+	char	score = '0';
+	
 	printf("right:%d\n", KEY_RIGHT);
 	create_circular_list(a, &a);
 	av = malloca(20, 20);
@@ -113,11 +125,11 @@ void	start_game(debug_t *debug, pieces_t *a)
 		init_pair(2, COLOR_WHITE, COLOR_BLACK);
 		attron(COLOR_PAIR(2));
 		add_piece(av,reference, a, &a);
-		print_maps(av, reference, a->next->map);
+		print_maps(av, reference, a->next->map, score);
 		ch = ncurse_stuff();
 		while(clok + 40000 > clock());
 		gameplay(ch, reference, av, a);
-		delete_complete_line(reference, av);
+		delete_complete_line(reference, av, &score);
 	}
 	endwin();
 }

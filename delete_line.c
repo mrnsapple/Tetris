@@ -14,7 +14,7 @@ void	delete_line(char **a, int y)
 			a[y][x] = a[y -1][x];
 }
 
-void	delete_complete_line(char **av, char **reference)
+void	delete_complete_line(char **av, char **reference, char *score)
 {
 	int	l;
 	int	stars = 0;
@@ -38,6 +38,7 @@ void	delete_complete_line(char **av, char **reference)
 		printw(de);
 		printw("\n");*/
 		if (stars == l - 7) {
+			(*score)++;
 			delete_line(reference, y);
 			delete_line(av, y);
 			y = 0;
