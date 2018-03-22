@@ -55,19 +55,19 @@ void	add_piece(char **av, char **reference, pieces_t *a, pieces_t **b)
 {
 	int	i = 0;
 	int	size;
-	char	*de;
+//	char	*de;
 	int	piece_stars;
 
 	//printw("name\n");
 	//printw(a->name);
-	de = malloc(sizeof(char) * 3);
+//	de = malloc(sizeof(char) * 3);
 	i = number_stars(reference);
 	piece_stars = number_stars((*b)->map);
 	piece_stars = piece_stars + '0';
 	if (i != 0) {
 		//size = move_piece(reference);
 		size = i + '0';
-		de[0] = size;
+		/*de[0] = size;
 		de[1] = '\0';
 		printw("size:");
 		printw(de);
@@ -76,7 +76,7 @@ void	add_piece(char **av, char **reference, pieces_t *a, pieces_t **b)
 		de[0] = piece_stars;
 		de[1] = '\0';
 		printw(de);
-		printw("\n");
+		printw("\n");*/
 		if (size == piece_stars)
 			here_really_transform_map(av, reference, b, &i);
 	}

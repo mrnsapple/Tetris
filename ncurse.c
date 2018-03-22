@@ -90,7 +90,7 @@ void	print_maps(char **a, char **b, char **c, char score)
 	de[0] = score;
 	de[1] = '\0';
 	print_map(a);
-	print_map(b);
+	//print_map(b);
 	
 	printw("SCORE  : ");
 	printw(de);
@@ -106,7 +106,7 @@ void	start_game(debug_t *debug, pieces_t *a)
 	int	win = 0;
 	int	ch;
 	char	**reference;
-	int     clok;
+	int     clok = 0;
 	char	score = '0';
 	
 	printf("right:%d\n", KEY_RIGHT);
@@ -120,15 +120,20 @@ void	start_game(debug_t *debug, pieces_t *a)
 	cbreak();         // don't interrupt for user input
 	timeout(500);
 	while (win == 0) {
-		clok = clock();
+		if (clok + 2000 < clock())
+			clok = clock();
 		start_color();
 		init_pair(2, COLOR_WHITE, COLOR_BLACK);
 		attron(COLOR_PAIR(2));
-		add_piece(av,reference, a, &a);
+		
 		print_maps(av, reference, a->next->map, score);
 		ch = ncurse_stuff();
-		while(clok + 40000 > clock());
-		gameplay(ch, reference, av, a);
+		//printw(clock());
+		if (clok  + 620 > clock()) {
+			//	printw("uahahah\n");
+			add_piece(av,reference, a, &a);
+		}
+		gameplay(ch, reference, av, a);	
 		delete_complete_line(reference, av, &score);
 	}
 	endwin();
