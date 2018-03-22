@@ -16,7 +16,8 @@ SRC 	=	main.c				\
 		ncurse.c			\
 		debug.c				\
 		add_piece.c			\
-		gameplay.c
+		gameplay.c			\
+		delete_line.c
 
 OBJ	=	$(SRC:.c=.o)
 

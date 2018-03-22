@@ -97,7 +97,7 @@ void	start_game(debug_t *debug, pieces_t *a)
 	int	win = 0;
 	int	ch;
 	char	**reference;
-	int     clok;// = clock();
+	int     clok;
 
 	printf("right:%d\n", KEY_RIGHT);
 	create_circular_list(a, &a);
@@ -115,9 +115,9 @@ void	start_game(debug_t *debug, pieces_t *a)
 		add_piece(av,reference, a, &a);
 		print_maps(av, reference, a->next->map);
 		ch = ncurse_stuff();
-		while(clok + 300000 > clock());
+		while(clok + 40000 > clock());
 		gameplay(ch, reference, av, a);
-		//a = a->next;
+		delete_complete_line(reference, av);
 	}
 	endwin();
 }

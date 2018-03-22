@@ -25,7 +25,6 @@ int	here_really_transform_map(char **av, char **reference, pieces_t **b, int *i)
 		for (x = 0; reference[y][x] != '\0'; x++) {
 			if (reference[y][x] == '_' && reference[y - 1][x] == '*') {
 				*b = (*b)->next;
-				printw("stardelete\n");
 				*i = 0;
 				delete_all_stars(reference);
 				return (0);
@@ -40,21 +39,6 @@ int	here_really_transform_map(char **av, char **reference, pieces_t **b, int *i)
 	}
 	return (0);
 }
-       
-/*int	move_piece(char **reference)
-{
-	int	x;
-	int	y = 0;
-	char	size = '0';
-
-	for (y = 0; reference[y] != NULL; y++)
-		for (x = 0; reference[y][x] != '\0'; x++) {
-			if ((reference[y][x] == ' ' || reference[y][x] == '_')
-			     && reference[y - 1][x] == '*')
-				size = size + 1;
-		}
-	return (size);
-}*/
 
 int	number_stars(char **reference)
 {
