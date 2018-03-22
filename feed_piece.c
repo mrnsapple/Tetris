@@ -14,12 +14,12 @@ char    *file_name(char *name, int i)
 	int     g;
 
 	file = malloc(sizeof(char) * (my_strlen(name) + 25));
-        for (i = 0; a[i] != '\0'; i++)
-                file[i] = a[i];
-        for (g = 0, i = i; name[g] != '\0'; g++, i++)
-                file[i] = name[g];
-        file[i] = '\0';
-        return (file);
+	for (i = 0; a[i] != '\0'; i++)
+		file[i] = a[i];
+	for (g = 0, i = i; name[g] != '\0'; g++, i++)
+		file[i] = name[g];
+	file[i] = '\0';
+	return (file);
 }
 
 char	*delete_after_point(char *name)
@@ -39,6 +39,7 @@ void	read_files_next_line(int *y, int *i, int *x, pieces_t *a)
 	(*i)++;
 	*x = 0;
 }
+
 void	read_files(int fd, pieces_t *a)
 {
 	int	size;
@@ -48,7 +49,7 @@ void	read_files(int fd, pieces_t *a)
 	int	x = 0;
 	
 	for (size = read(fd, buff, 1); size > 0;
-             size = read(fd, buff, 1)) {
+	     size = read(fd, buff, 1)) {
 		
 		if (buff[0] == ' ')
 			i++;
@@ -66,14 +67,23 @@ void	read_files(int fd, pieces_t *a)
 	a->map[y] = NULL;
 }
 
-int	errors(int y, char buff)
+int	errors(int y, char buff, int *x)
 {
+	(*x)++;
 	if (y == 0 && (buff != ' '
 		       && (buff < '0' || buff > '9')))
 		return (0);
 	if (y != 0 && buff != ' ' && buff != '*' && buff != '\n')
 		return (0);
 	return (1);
+}
+
+void	error_piece_next_line(int *y, int *x_uno, int *x_dos)
+{
+	(*y)++;
+	if ((*x_uno) < (*x_dos) && *y != 1)
+		(*x_uno) = *x_dos;
+	*x_dos = 0;
 }
 
 int	error_piece(char *file, pieces_t *a)
@@ -83,22 +93,16 @@ int	error_piece(char *file, pieces_t *a)
 	int	y = 0;
 	char    buff[2];
 	int	x[2] = {0,0};
-	//printf("file:%s\n", file);
+
 	fd = open(file, O_RDONLY, 0644);
 	if (fd == -1)
-                return (0);
+		return (0);
 	for (size = read(fd, buff, 1); size > 0;
-             size = read(fd, buff, 1)) {
-		//	printf("buff:%c, x[0]:%d, x[1]:%d\n", buff[0], x[0], x[1]);
-		if (buff[0] == '\n') {
-			y++;
-			if (x[1] < x[0] && y != 1)
-				x[1] = x[0];
-			x[0] = 0;
-		}
-		if (errors(y, buff[0]) == 0)
+	     size = read(fd, buff, 1)) {
+		if (buff[0] == '\n')
+			error_piece_next_line(&y, &x[1], &x[0]);
+		if (errors(y, buff[0], &x[0]) == 0)
 			return (0);
-		x[0]++;
 	}
 	a->map = malloca(y, x[1]);
 	close(fd);
@@ -119,10 +123,10 @@ int     feed_piece(pieces_t *a, char *name)
 		a->map = NULL;
 		return (0);
 	}
-        fd = open(file, O_RDONLY, 0644);//O_CREAT | O_RDWR | O_TRUNC, 0644);
-        if (fd == -1) {
+	fd = open(file, O_RDONLY, 0644);//O_CREAT | O_RDWR | O_TRUNC, 0644);
+	if (fd == -1) {
 		a->map = NULL;
-                return (0);
+		return (0);
 	}
 	read_files(fd, a);
 	free(file);
