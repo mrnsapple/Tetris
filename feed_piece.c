@@ -130,22 +130,29 @@ int     feed_piece(pieces_t *a, char *name)
 	return (1);
 }
 
-void	good_lines_and_rows_num(pieces_t *a, char **av)
+int	good_lines_and_rows_num(pieces_t *a, char **av)
 {
 	int	x = 0;
-	int	y;
-	int	mem_x;
+	int	y = 0;
+	int	mem_x = 0;
 	
+	if (a->size[0] == '0' && a->size[1] == '0')
+		return (0);
 	for (y = 0; av[y] != NULL; y++) {
-		mem_x = x;
+		//printf("mem:%d,aav;%s\n", mem_x,av[y]);
+		//mem_x = x;
 		for (x = 0; av[y][x] != '\0'; x++);
 		if (x > mem_x)
 			mem_x = x;
 	}
-	if (y - 1 != a->size[1] || mem_x != a->size[0]) {
-		a->size[1] = 0;
-		a->size[0] = 0;
+	//printf("x%d,y %d\n", mem_x, y);
+	//printf("size0:%c, size1:%c\n", a->size[0], a->size[1]);
+	if (y + '0' != a->size[1] || mem_x + '0' != a->size[0]) {
+		printf("enter\n");
+		a->size[1] = '0';
+		a->size[0] = '0';
 	}
+	return (0);
 }
 
 void	feed_linked_list(pieces_t **a)
@@ -161,7 +168,9 @@ void	feed_linked_list(pieces_t **a)
 	}
 	list = *a;
 	while (list) {
+		printf("list;%s\n", list->name);
 		good_lines_and_rows_num(list, list->map);
+		printf("iut:%c, %c\n\n\n\n", list->size[0], list->size[1]);
 		list = list->next;
 	}
 }
