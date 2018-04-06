@@ -51,6 +51,8 @@ int	transform_debug(int c, int option_index, debug_t *debug)
 		return (0);
 	if (c == 'L')
 		debug->level = flag;
+	//its_num(flag);
+		
 	if (c == 'l')
 		debug->left = flag;
 	if (c == 'r')

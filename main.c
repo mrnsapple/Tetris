@@ -92,7 +92,7 @@ debug_t	*initialize_debug(void)
 	a->drop = "^EOB";
 	a->quit = "q";
 	a->pause = "(space)";
-	a->next = "false";
+	a->next = "Yes";
 	a->level = "1";
 	a->size = "20*10";
 	return (a);
