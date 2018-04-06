@@ -1,13 +1,13 @@
 /*
 ** EPITECH PROJECT, 2018
-** 
+** demdek
 ** File description:
-** dj
+** demkdek
 */
 
 #include "list.h"
 
-int     strcom(char *a, char *b)
+int	strcom(char *a, char *b)
 {
 	int     i;
 
@@ -20,7 +20,7 @@ int     strcom(char *a, char *b)
 	return (1);
 }
 
-int     just_points(char *a)
+int	just_points(char *a)
 {
 	int     i;
 	int     g = 0;
@@ -31,7 +31,7 @@ int     just_points(char *a)
 	return (g);
 }
 
-void    move_right(char **reference, char **av)
+void	move_right(char **reference, char **av)
 {
 	int     l;
 

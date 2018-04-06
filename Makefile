@@ -7,6 +7,7 @@
 
 SRC 	=	main.c				\
 		main2.c				\
+		main3.c				\
 		help.c				\
 		my_puts/my_puts.c		\
 		list/linked_list.c		\

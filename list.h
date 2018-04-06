@@ -65,7 +65,7 @@ typedef struct	pieces
 	char		*dir_name;
 	struct pieces	*next;
 }pieces_t;
-
+pieces_t	*get_pieces(pieces_t *a);
 void	print_debug(debug_t *a, debug_t *b);
 void	transform_debug_second(char *flag, int c,
 			       int option_index, debug_t *debug);
