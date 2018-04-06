@@ -40,14 +40,21 @@ void	transform_debug_second(char *flag, int c,
 	if (c == 'm')
 		debug->map_size = flag;
 }
-/*
+
 int	its_num(char *a)
 {
-	for (int i = 0; a[i] != '\0'; i++) {
-		if (a[0] < '0' || a[
-		
-}*/
+	for (int i = 0; a[i] != '\0'; i++)
+		if (a[i] < '0' || a[i] > '9')
+			return (0);
+	return (1);
+}
 
+char	*modify_flag(char *a)
+{
+	if (a[0] != '\0')
+		a[1] = '\0';
+	return (a);
+}
 int	transform_debug(int c, int option_index, debug_t *debug)
 {
 	
@@ -56,9 +63,10 @@ int	transform_debug(int c, int option_index, debug_t *debug)
 	flag = optarg;
 	if (flag == NULL)
 		return (0);
+	flag = modify_flag(flag);
 	if (c == 'L') {
-//		if (its_num(flag) == 0)
-//			return (0);
+		if (its_num(flag) == 0)
+			return (0);
 		debug->level = flag;
 	}
 	if (c == 'l')
