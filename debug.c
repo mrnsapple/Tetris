@@ -51,6 +51,8 @@ int	its_num(char *a)
 
 char	*modify_flag(char *a)
 {
+	if (my_strcmp(a, " "))
+		return ("(space)");
 	if (a[0] != '\0')
 		a[1] = '\0';
 	return (a);

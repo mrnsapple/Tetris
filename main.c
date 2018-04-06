@@ -147,7 +147,7 @@ int	main(int ac, char **av)
 	order_pieces(&a, a);
 	feed_linked_list(&a);
 	debug = debug_mode(ac, av, a);
-	my_putstr("Press any key to start Tetris\n");
+	my_putstr("Press any key to start Tetris");
 	start_game(debug, a);
 	free(a);
 	return (0);
