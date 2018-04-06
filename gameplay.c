@@ -13,7 +13,7 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <unistd.h>
-	 
+ 
 void	can_move_right(char **reference, char **av, pieces_t *a)
 {
 	int	i = 0;

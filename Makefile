@@ -17,7 +17,8 @@ SRC 	=	main.c				\
 		my_puts/put_in_array.c		\
 		ncurse.c			\
 		ncruse2.c			\
-		debug.c				\
+		debug/debug.c			\
+		debug/debug2.c			\
 		add_piece.c			\
 		gameplay.c			\
 		delete_line.c
@@ -38,6 +39,6 @@ clean:
 	$(RM) $(NAME)
 
 fclean:	clean
-	rm -f $(OBJ) $(NAME) *~ *#
+	rm -rf $(OBJ) $(NAME) *~ *#
 
 re:	fclean all

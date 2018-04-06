@@ -66,6 +66,9 @@ typedef struct	pieces
 	struct pieces	*next;
 }pieces_t;
 
+void	print_debug(debug_t *a, debug_t *b);
+void	transform_debug_second(char *flag, int c,
+			       int option_index, debug_t *debug);
 void    move_right(char **reference, char **av);
 int	just_points(char *a);
 void	n_curing(pieces_t *a, debug_t *debub, debug_t *debug_text);
