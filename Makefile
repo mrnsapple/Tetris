@@ -9,7 +9,6 @@ SRC 	=	main.c				\
 		main2.c				\
 		help.c				\
 		my_puts/my_puts.c		\
-		my_puts/my_put_nbr.c		\
 		list/linked_list.c		\
 		list/alphabetic.c		\
 		pieces/second_feed.c		\
