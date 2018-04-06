@@ -15,7 +15,8 @@ void	delete_all_stars(char **reference)
 				reference[y][x] = '_';
 }
 
-int	here_really_transform_map(char **av, char **reference, pieces_t **b, int *i)
+int	here_really_transform_map(char **av, char **reference,
+				  pieces_t **b, int *i)
 {
 	int	y;
 	int	x;
@@ -52,27 +53,34 @@ int	number_stars(char **reference)
 	return (i);
 }
 
+void	i_is_0(char **av, char **reference, pieces_t **b, int *i)
+{
+	int	size;
+	int	piece_stars;
+	piece_stars = number_stars((*b)->map);
+	piece_stars = piece_stars + '0';
+	if (*i != 0) {
+		size = *i + '0';
+		if (size == piece_stars)
+			here_really_transform_map(av, reference, b, i);
+	}
+}
+
 void	add_piece(char **av, char **reference, pieces_t *a, pieces_t **b)
 {
 	int	i = 0;
-	int	size;
-	int	piece_stars;
 
 	i = number_stars(reference);
-	piece_stars = number_stars((*b)->map);
-	piece_stars = piece_stars + '0';
-	if (i != 0) {
-		size = i + '0';
-		if (size == piece_stars)
-			here_really_transform_map(av, reference, b, &i);
-	}
+	i_is_0(av, reference, b, &i);
 	if (i == 0)
 		for (int y = 0; (*b)->map[y] != NULL; y++)
 			for (int x = 0; (*b)->map[y][x] != '\0'; x++) {
 				if (av[y + 1][x + 1] == '*') {
 					av = create_square(20, 20, av);
-					reference = create_square(20, 20, reference);
-					y = 0; x = 0;
+					reference = create_square(20, 20,
+								  reference);
+					y = 0;
+					x = 0;
 				}
 				av[y + 1][x + 1] = (*b)->map[y][x];
 				reference[y + 1][x + 1] = (*b)->map[y][x];
