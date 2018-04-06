@@ -6,6 +6,7 @@
 ##
 
 SRC 	=	main.c				\
+		main2.c				\
 		help.c				\
 		my_puts/my_puts.c		\
 		my_puts/my_put_nbr.c		\
@@ -13,8 +14,10 @@ SRC 	=	main.c				\
 		list/alphabetic.c		\
 		pieces/second_feed.c		\
 		pieces/feed_pieces.c		\
+		pieces/feed_pieces_error.c	\
 		my_puts/put_in_array.c		\
 		ncurse.c			\
+		ncruse2.c			\
 		debug.c				\
 		add_piece.c			\
 		gameplay.c			\

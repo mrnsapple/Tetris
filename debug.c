@@ -39,7 +39,6 @@ void	transform_debug_second(char *flag, int c,
 		debug->next = flag;
 	if (c == 'm')
 		debug->map_size = flag;
-	
 }
 
 int	transform_debug(int c,int option_index, debug_t *debug)
@@ -48,9 +47,10 @@ int	transform_debug(int c,int option_index, debug_t *debug)
 	char	*flag = NULL;
 
 	flag = optarg;
+	//printf("flag%s\n", flag);
 	if (flag == NULL)
 		return (0);
-	if (c == 'L')
+	if (c == 'L')//here only can be num
 		debug->level = flag;
 	if (c == 'l')
 		debug->left = flag;
@@ -67,8 +67,8 @@ int	transform_debug(int c,int option_index, debug_t *debug)
 int	getopt_use(int ac, char **av, debug_t *debug)
 {
 	int	option_index = 0;
-	int	c;	
-	
+	int	c;
+
 	static struct option long_options[] =
 		{
 			{"level", required_argument, 0, 'L'},
@@ -91,4 +91,3 @@ int	getopt_use(int ac, char **av, debug_t *debug)
 	}
 	return (0);
 }
-	

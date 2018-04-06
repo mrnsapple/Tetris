@@ -7,14 +7,6 @@
 
 #include "../list.h"
 
-void	error_piece_next_line(int *y, int *x_uno, int *x_dos)
-{
-	(*y)++;
-	if ((*x_uno) < (*x_dos) && *y != 1)
-		(*x_uno) = *x_dos;
-	*x_dos = 0;
-}
-
 int	error_piece(char *file, pieces_t *a)
 {
 	int	fd;
@@ -95,7 +87,7 @@ void	feed_linked_list(pieces_t **a)
 	pieces_t	*list = *a;
 	char		*n;
 
-	rand();
+//	rand();
 	while(list) {
 		n = list->dir_name;
 		feed_piece(list, n);

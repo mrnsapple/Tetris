@@ -22,7 +22,7 @@ void	delete_complete_line(char **av, char **reference, char *score)
 	for (l = 0; reference[0][l] != '\0'; l++);
 	for (int y = 0; reference[y] != NULL; y++) {
 		stars = 0;
-                for (int x = 0; reference[y][x] != '\0'; x++)       
+                for (int x = 0; reference[y][x] != '\0'; x++)
 			if (reference[y][x] == '*')
 				stars++;
 		if (stars == l - 7) {
@@ -31,5 +31,5 @@ void	delete_complete_line(char **av, char **reference, char *score)
 			delete_line(av, y);
 			y = 0;
 		}
-	}
+}
 }
