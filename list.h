@@ -21,9 +21,7 @@
 #include <sys/stat.h>
 #include <errno.h>
 #include <dirent.h>
-//#include <term.h>
 #include <getopt.h>
-
 
 #ifndef LIST_H_
 #define LIST_H_
@@ -57,7 +55,7 @@ typedef struct debug
 	char	*level;
 	char	*size;
 }debug_t;
-	
+
 typedef struct	pieces
 {
 	char		color;

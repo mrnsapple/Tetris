@@ -43,9 +43,9 @@ int	before_error_piece(char *file, pieces_t *a)
 
 int     feed_piece(pieces_t *a, char *name)
 {
- 	int     fd;
+	int     fd;
 	int	size = 0;
- 	char    *file;
+	char    *file;
 
 	file = file_name(name, size);
 	a->name = delete_after_point(name);
@@ -87,7 +87,6 @@ void	feed_linked_list(pieces_t **a)
 	pieces_t	*list = *a;
 	char		*n;
 
-//	rand();
 	while(list) {
 		n = list->dir_name;
 		feed_piece(list, n);

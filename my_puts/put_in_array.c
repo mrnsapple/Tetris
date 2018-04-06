@@ -18,7 +18,7 @@ char	**malloca(int num_ar, int cha)
 	return (pwd);
 }
 
-int **int_malloca(int num_ar, int cha)
+int	**int_malloca(int num_ar, int cha)
 {
 	int	**pwd;
 	int	fd;
@@ -36,4 +36,3 @@ void	print_array(char **map)
 		my_putchar('\n');
 	}
 }
-	

@@ -31,5 +31,5 @@ void	delete_complete_line(char **av, char **reference, char *score)
 			delete_line(av, y);
 			y = 0;
 		}
-}
+	}
 }

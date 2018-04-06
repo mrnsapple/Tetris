@@ -41,16 +41,15 @@ void	transform_debug_second(char *flag, int c,
 		debug->map_size = flag;
 }
 
-int	transform_debug(int c,int option_index, debug_t *debug)
+int	transform_debug(int c, int option_index, debug_t *debug)
 {
 	
 	char	*flag = NULL;
 
 	flag = optarg;
-	//printf("flag%s\n", flag);
 	if (flag == NULL)
 		return (0);
-	if (c == 'L')//here only can be num
+	if (c == 'L')
 		debug->level = flag;
 	if (c == 'l')
 		debug->left = flag;

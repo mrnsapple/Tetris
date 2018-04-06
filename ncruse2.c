@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include "list.h"
 
-void    n_curing(pieces_t *a, debug_t *debub, debug_t *debug_text)
+void	n_curing(pieces_t *a, debug_t *debub, debug_t *debug_text)
 {
 	my_putstr("*** DEBUG MODE ***");
 	print_debug(debug_text, debub);

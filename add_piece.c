@@ -21,22 +21,23 @@ int	here_really_transform_map(char **av, char **reference, pieces_t **b, int *i)
 	int	x;
 
 	for (y = 0; reference[y] != NULL; y++);
-	for (y = y - 1; y != -1; y--) {
+	for (y = y - 1; y != -1; y--)
 		for (x = 0; reference[y][x] != '\0'; x++) {
-			if (reference[y][x] == '_' && reference[y - 1][x] == '*') {
+			if (reference[y][x] == '_' &&
+			    reference[y - 1][x] == '*') {
 				*b = (*b)->next;
 				*i = 0;
 				delete_all_stars(reference);
 				return (0);
 			}
-			if (reference[y][x] == ' ' && reference[y - 1][x] == '*') {
+			if (reference[y][x] == ' ' &&
+			    reference[y - 1][x] == '*') {
 				reference[y][x] = '*';
 				reference[y - 1][x] = ' ';
 				av[y][x] = '*';
 				av[y - 1][x] = ' ';
 			}
 		}
-	}
 	return (0);
 }
 
@@ -50,7 +51,7 @@ int	number_stars(char **reference)
 				i++;
 	return (i);
 }
-//tigetstr
+
 void	add_piece(char **av, char **reference, pieces_t *a, pieces_t **b)
 {
 	int	i = 0;
@@ -65,7 +66,7 @@ void	add_piece(char **av, char **reference, pieces_t *a, pieces_t **b)
 		if (size == piece_stars)
 			here_really_transform_map(av, reference, b, &i);
 	}
-	if (i == 0) {
+	if (i == 0)
 		for (int y = 0; (*b)->map[y] != NULL; y++)
 			for (int x = 0; (*b)->map[y][x] != '\0'; x++) {
 				if (av[y + 1][x + 1] == '*') {
@@ -76,5 +77,4 @@ void	add_piece(char **av, char **reference, pieces_t *a, pieces_t **b)
 				av[y + 1][x + 1] = (*b)->map[y][x];
 				reference[y + 1][x + 1] = (*b)->map[y][x];
 			}
-	}
 }

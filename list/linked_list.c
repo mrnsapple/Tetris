@@ -7,16 +7,16 @@
 
 #include "../list.h"
 
-void    print_list(pieces_t *a)
+void	print_list(pieces_t *a)
 {
-        pieces_t        *tmp;
+	pieces_t	*tmp;
 
-        tmp = a;
+	tmp = a;
 	while (tmp != NULL) {
-	        my_putstr(tmp->dir_name);
+		my_putstr(tmp->dir_name);
 		my_putchar('\n');
-                tmp = tmp->next;
-        }
+		tmp = tmp->next;
+	}
 }
 
 void	part_of_order_pieces(pieces_t *before, pieces_t *after,

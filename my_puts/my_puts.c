@@ -18,7 +18,7 @@ int	my_strlen(char *av)
 	for (i = 0; av[i] != '\0'; i++);
 	return (i);
 }
-		
+
 void	my_putchar(char c)
 {
 	write(1, &c, 1);

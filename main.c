@@ -136,14 +136,6 @@ int	main(int ac, char **av)
 	pieces_t	*a = NULL;
 	debug_t		*debug = NULL;
 
-	/*char	*cr = tigetstr("hehdhejdnjendej");
-	//if (cr == NULL)
-	//	printf("not_exitst");
-	else {
-		printf("exits\n");
-		printf("%s\n", cr);
-		}*/
-	//printf("cr:%s\n", cr);
 	for (int i = ac -1; i != 0; i--)
 		if (strcom("--help", av[i]) == 1) {
 			help(ac, av);

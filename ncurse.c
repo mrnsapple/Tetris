@@ -79,8 +79,8 @@ void	start_game(debug_t *debug, pieces_t *a)
 		print_maps(av, reference, a->next->map, score);
 		ch = ncurse_stuff();
 		if (clok  + 620 > clock())
-			add_piece(av,reference, a, &a);
-		gameplay(ch, reference, av, a);	
+			add_piece(av, reference, a, &a);
+		gameplay(ch, reference, av, a);
 		delete_complete_line(reference, av, &score);
 	}
 	endwin();
