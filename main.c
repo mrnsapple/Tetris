@@ -88,8 +88,8 @@ debug_t	*initialize_debug(void)
 	a = malloc(sizeof(debug_t));
 	a->left = "^EOD";
 	a->right = "^EOC";
-	a->turn = "top";
-	a->drop = "down arrow";
+	a->turn = "^EOA";
+	a->drop = "^EOB";
 	a->quit = "q";
 	a->pause = "(space)";
 	a->next = "false";
