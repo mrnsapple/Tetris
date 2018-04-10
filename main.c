@@ -57,7 +57,8 @@ debug_t	*debug_mode(int ac, char **av, pieces_t *a)
 
 	debug_text = initialize_debug_text();
 	debug = initialize_debug();
-	getopt_use(ac, av, debug);
+	if (getopt_use(ac, av, debug) == 0)
+		return (NULL);
 	for (i = ac -1; i != 0; i--)
 		if (strcom("-D", av[i]) == 1)
 			n_curing(a, debug, debug_text);
@@ -81,6 +82,8 @@ int	main(int ac, char **av)
 	order_pieces(&a, a);
 	feed_linked_list(&a);
 	debug = debug_mode(ac, av, a);
+	if (debug == NULL)
+		return (84);
 	my_putstr("Press any key to start Tetris");
 	start_game(debug, a);
 	free(a);

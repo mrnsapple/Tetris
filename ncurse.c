@@ -64,9 +64,13 @@ void	start_game(debug_t *debug, pieces_t *a)
 	av = malloca(20, 20);
 	reference = malloca(20, 20);
 	av = create_square(20, 20, av);
+	//printf("jeje\n");
 	reference = create_square(20, 20, reference);
+	//printf("jeje\n");
 	getchar();
+	//printf("jeje\n");
 	initscr();
+	//printf("jeje\n");
 	cbreak();
 	timeout(50);
 	while (win == 0) {

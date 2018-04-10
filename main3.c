@@ -40,6 +40,8 @@ pieces_t	*get_pieces(pieces_t *a)
 	struct dirent   *buff;
 
 	fd = opendir("tetriminos");
+	if (fd == NULL)
+		return (NULL);
 	for (buff = readdir(fd); buff != NULL; buff = readdir(fd)) {
 		if (just_points(buff->d_name) != 0) {
 			place_dir_name_list(&a, a, buff->d_name);
@@ -53,7 +55,7 @@ void    print_pieces_number(pieces_t *a)
 	char    i;
 
 	for (i = '0'; a != NULL; i++, a = a->next);
-	my_putstr("Tetrimino :  ");
+	my_putstr("Tetriminos :  ");
 	my_putchar(i);
 	my_putchar('\n');
 }
@@ -61,7 +63,7 @@ void    print_pieces_number(pieces_t *a)
 int     debug_tetrimino(pieces_t *a)
 {
  	while (a) {
-		my_putstr("Tetrimino :  Name ");
+		my_putstr("Tetriminos :  Name ");
 		my_putstr(a->name);
 		if (a->size[0] == '0' && a->size[1] == '0')
 			my_putstr(" :  Error\n");
