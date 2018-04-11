@@ -54,6 +54,7 @@ typedef struct debug
 	char	*map_size;
 	char	*level;
 	char	*size;
+	int	ch;
 }debug_t;
 
 typedef struct	pieces
@@ -78,7 +79,7 @@ void	create_circular_list(pieces_t *a, pieces_t **b);
 void	error_piece_next_line(int *y, int *x_uno, int *x_dos);
 char	**create_square(int y, int x, char **av);
 void	delete_complete_line(char **av, char **reference, char *score);
-int	 gameplay(int ch, char **reference, char **av, pieces_t *a);
+int	 gameplay(char **reference, char **av, pieces_t *a, debug_t *debug);
 void	add_piece(char **av, char **reference,pieces_t *a, pieces_t **b);
 int	 number_stars(char **reference);
 char	*file_name(char *name, int i);

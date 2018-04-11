@@ -55,7 +55,6 @@ void	start_game(debug_t *debug, pieces_t *a)
 {
 	char	**av;
 	int	win = 0;
-	int	ch;
 	char	**reference;
 	int     clok = 0;
 	char	score = '0';
@@ -81,10 +80,10 @@ void	start_game(debug_t *debug, pieces_t *a)
 		attron(COLOR_PAIR(2));
 		
 		print_maps(av, reference, a->next->map, score);
-		ch = ncurse_stuff();
+		debug->ch = ncurse_stuff();
 		if (clok  + 620 > clock())
 			add_piece(av, reference, a, &a);
-		gameplay(ch, reference, av, a);
+		gameplay(reference, av, a, debug);
 		delete_complete_line(reference, av, &score);
 	}
 	endwin();

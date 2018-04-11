@@ -33,7 +33,8 @@ void	print_debug(debug_t *a, debug_t *b)
 int	after_slash_a_word(char **av)
 {
 	for (int i = 0; av[i] != NULL; i++) {
-		if (my_strlen(av[i]) >= 2 && av[i + 1] != NULL) 
+		if (my_strlen(av[i]) >= 2 && av[i + 1] != NULL &&
+		    my_strcmp("-D", av[i]) != 1) 
 			if (av[i][0] == '-' && av[i][1] != '-'
 			    && av[i + 1][0] == '-')
 				return (0);

@@ -67,6 +67,13 @@ debug_t	*debug_mode(int ac, char **av, pieces_t *a)
 	free(debug_text);
 	return (debug);
 }
+void	modify_debug(debug_t *debug)
+{
+	if (my_strcmp(debug->left, "(space)") == 1)
+		debug->left = " ";
+	if (my_strcmp(debug->right, "(space)") == 1)
+		debug->right = " ";
+}
 
 int	main(int ac, char **av)
 {
@@ -87,6 +94,8 @@ int	main(int ac, char **av)
 	if (debug == NULL)
 		return (84);
 	my_putstr("Press any key to start Tetris");
+	//printf("key:%d\n", KEY_LEFT);
+	modify_debug(debug);
 	start_game(debug, a);
 	free(a);
 	return (0);

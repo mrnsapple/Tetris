@@ -65,14 +65,17 @@ void	can_move_left(char **reference, char **av, pieces_t *a)
 		move_left(reference, av);
 }
 
-int	gameplay(int ch, char **reference, char **av, pieces_t *a)
+int	gameplay(char **reference, char **av, pieces_t *a, debug_t *debug)
 {
-	//printf("%d\n", KEY_LEFT);
-	if (ch == KEY_RIGHT)
+	//printf("key:%d\n", KEY_LEFT);
+	//mvprintw(0,0, "left:%s, right:%s, ch: %c, %d\n", debug->left, debug->right, debug->ch, debug->ch);
+	//if (debug->ch == 'd')
+	//	printw("its a di\n");
+	if (debug->ch == KEY_RIGHT || debug->ch == debug->right[0])
 		can_move_right(reference, av, a);
-	if (ch == KEY_LEFT)
+	if (debug->ch == KEY_LEFT || debug->ch == debug->left[0])
 		can_move_left(reference, av, a);
-	if (ch == 27)
+	if (debug->ch == 27)
 		endwin();
 	return (0);
 }
