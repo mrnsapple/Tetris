@@ -50,6 +50,8 @@ void	read_files(int fd, pieces_t *a)
 
 	for (size = read(fd, buff, 1); size > 0;
 	     size = read(fd, buff, 1)) {
+		if (size == -1)
+			exit(84);
 		if (buff[0] == ' ')
 			i++;
 		if ((i == 0 || i == 1) && buff[0] != ' ')

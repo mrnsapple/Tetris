@@ -80,7 +80,7 @@ int	getopt_use(int ac, char **av, debug_t *debug)
 		};
 	while((c = getopt_long (ac, av, "DL:l:r:t:d:q:p:w:m:d:", long_options,
 				&option_index)) != -1) {
-	        if (long_options[option_index].flag != 0)
+		if (long_options[option_index].flag != 0)
 			return (0);
 		if (transform_debug(c, option_index, debug) == 0)
 			return (0);
