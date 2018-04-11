@@ -67,6 +67,7 @@ void	can_move_left(char **reference, char **av, pieces_t *a)
 
 int	gameplay(int ch, char **reference, char **av, pieces_t *a)
 {
+	//printf("%d\n", KEY_LEFT);
 	if (ch == KEY_RIGHT)
 		can_move_right(reference, av, a);
 	if (ch == KEY_LEFT)

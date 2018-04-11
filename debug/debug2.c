@@ -1,3 +1,4 @@
+
 /*
 ** EPITECH PROJECT, 2018
 ** dkwnmwkand
@@ -29,22 +30,37 @@ void	print_debug(debug_t *a, debug_t *b)
 	my_putstr(b->size);
 }
 
-void	transform_debug_second(char *flag, int c,
+int	after_slash_a_word(char **av)
+{
+	for (int i = 0; av[i] != NULL; i++) {
+		if (my_strlen(av[i]) >= 2 && av[i + 1] != NULL) 
+			if (av[i][0] == '-' && av[i][1] != '-'
+			    && av[i + 1][0] == '-')
+				return (0);
+		    
+	}
+	return (1);
+}
+
+int	transform_debug_second(char *flag, int c,
 			       int option_index, debug_t *debug) {
 	if (c == 'l')
 		debug->left = flag;
-	if (c == 'r')
+	else if (c == 'r')
 		debug->right = flag;
-	if (c == 't')
+	else if (c == 't')
 		debug->turn = flag;
-	if (c == 'd')
+	else if (c == 'd')
 		debug->drop = flag;
-	if (c == 'q')
+	else if (c == 'q')
 		debug->quit = flag;
-	if (c == 'p')
+	else if (c == 'p')
 		debug->pause = flag;
-	if (c == 'w')
+	else if (c == 'w')
 		debug->next = flag;
-	if (c == 'm')
+	else if (c == 'm')
 		debug->map_size = flag;
+	else
+		return (0);
+	return (1);
 }

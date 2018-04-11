@@ -17,7 +17,7 @@ int	its_num(char *a)
 
 char	*modify_flag(char *a)
 {
-	if (my_strcmp(a, " "))
+	if (my_strcmp(a, " ") == 1 || my_strcmp(a, "(space)") == 1)
 		return ("(space)");
 	if (a[0] != '\0')
 		a[1] = '\0';
@@ -30,6 +30,7 @@ int	transform_debug(int c, int option_index, debug_t *debug)
 	char	*flag = NULL;
 
 	flag = optarg;
+	//printf("c:%c, %s\n", c, flag);
 	if (c == '?')
 		return (0);
 	if (flag == NULL)
@@ -37,10 +38,12 @@ int	transform_debug(int c, int option_index, debug_t *debug)
 	flag = modify_flag(flag);
 	if (c == 'L') {
 		if (its_num(flag) == 0)
-			return (1);
+			return (0);
 		debug->level = flag;
+		return (1);
 	}
-	transform_debug_second(flag, c , option_index, debug);
+	if (transform_debug_second(flag, c , option_index, debug) == 0)
+		return (0);
 	return (1);
 }
 
@@ -48,7 +51,7 @@ int	getopt_use(int ac, char **av, debug_t *debug)
 {
 	int	option_index = 0;
 	int	c;
-	printf("hehe\n");
+
 	static struct option long_options[] =
 		{
 			{"level", required_argument, 0, 'L'},

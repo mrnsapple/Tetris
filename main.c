@@ -57,6 +57,8 @@ debug_t	*debug_mode(int ac, char **av, pieces_t *a)
 
 	debug_text = initialize_debug_text();
 	debug = initialize_debug();
+	if (after_slash_a_word(av) == 0)
+		return (NULL);
 	if (getopt_use(ac, av, debug) == 0)
 		return (NULL);
 	for (i = ac -1; i != 0; i--)

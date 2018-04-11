@@ -67,10 +67,11 @@ typedef struct	pieces
 }pieces_t;
 pieces_t	*get_pieces(pieces_t *a);
 void	print_debug(debug_t *a, debug_t *b);
-void	transform_debug_second(char *flag, int c,
+int	transform_debug_second(char *flag, int c,
 			       int option_index, debug_t *debug);
 void    move_right(char **reference, char **av);
 int	just_points(char *a);
+int     after_slash_a_word(char **av);
 void	n_curing(pieces_t *a, debug_t *debub, debug_t *debug_text);
 char	**create_square(int y, int x, char **av);
 void	create_circular_list(pieces_t *a, pieces_t **b);
