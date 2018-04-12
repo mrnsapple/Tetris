@@ -51,6 +51,9 @@ int	after_slash_a_word(char **av)
 	for (int i = 0; av[i] != NULL; i++) {
 		if (my_strcmp("-", av[i]) == 1)
 			return (0);
+		if (my_strcmp("-D", av[i]) == 1 && av[i + 1] != NULL &&
+		    av[i + 1][0] != '-')
+			return (0);
 		if (my_strlen(av[i]) >= 2 && av[i + 1] != NULL &&
 		    my_strcmp("-D", av[i]) != 1)
 			if (av[i][0] == '-' && av[i][1] != '-') {
