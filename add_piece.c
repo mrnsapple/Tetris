@@ -6,7 +6,7 @@
 */
 
 #include "list.h"
-
+ 
 void	delete_all_stars(char **reference)
 {
 	for (int y = 0; reference[y] != NULL; y++)
@@ -57,6 +57,7 @@ void	i_is_0(char **av, char **reference, pieces_t **b, int *i)
 {
 	int	size;
 	int	piece_stars;
+
 	piece_stars = number_stars((*b)->map);
 	piece_stars = piece_stars + '0';
 	if (*i != 0) {
