@@ -15,6 +15,13 @@ void	delete_all_stars(char **reference)
 				reference[y][x] = '_';
 }
 
+void	here_really_trans_map(pieces_t **b, int *i, char **reference)
+{
+	*b = (*b)->next;
+	*i = 0;
+	delete_all_stars(reference);
+}
+
 int	here_really_transform_map(char **av, char **reference,
 				  pieces_t **b, int *i)
 {
@@ -26,9 +33,7 @@ int	here_really_transform_map(char **av, char **reference,
 		for (x = 0; reference[y][x] != '\0'; x++) {
 			if (reference[y][x] == '_' &&
 			    reference[y - 1][x] == '*') {
-				*b = (*b)->next;
-				*i = 0;
-				delete_all_stars(reference);
+				here_really_trans_map(b, i, reference);
 				return (0);
 			}
 			if (reference[y][x] == ' ' &&
@@ -77,8 +82,8 @@ void	add_piece(char **av, char **reference, pieces_t *a, pieces_t **b)
 		for (int y = 0; (*b)->map[y] != NULL; y++)
 			for (int x = 0; (*b)->map[y][x] != '\0'; x++) {
 				if (av[y + 1][x + 1] == '*') {
-					av = create_square(20, 20, av);
-					reference = create_square(20, 20,
+					av = create_squaree(20, 20, reference);
+					reference = create_squaree(20, 20,
 								  reference);
 					y = 0;
 					x = 0;

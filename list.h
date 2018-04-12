@@ -72,12 +72,13 @@ int	transform_debug_second(char *flag, int c,
 			       int option_index, debug_t *debug);
 void    move_right(char **reference, char **av);
 int	just_points(char *a);
+char    **create_squaree(int y, int x, char **av);
 int     after_slash_a_word(char **av);
 void	n_curing(pieces_t *a, debug_t *debub, debug_t *debug_text);
-char	**create_square(int y, int x, char **av);
+char	**create_square(int y, int x);
 void	create_circular_list(pieces_t *a, pieces_t **b);
 void	error_piece_next_line(int *y, int *x_uno, int *x_dos);
-char	**create_square(int y, int x, char **av);
+char	**create_square(int y, int x);
 void	delete_complete_line(char **av, char **reference, char *score);
 int	 gameplay(char **reference, char **av, pieces_t *a, debug_t *debug);
 void	add_piece(char **av, char **reference,pieces_t *a, pieces_t **b);

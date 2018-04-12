@@ -23,9 +23,31 @@ void	n_curing(pieces_t *a, debug_t *debub, debug_t *debug_text)
 	debug_tetrimino(a);
 }
 
-char    **create_square(int y, int x, char **av)
+char	**create_square(int y, int x)
 {
-	int     i;
+	int	i;
+	char	**av;
+
+	av = malloca(20, 20);
+	for (i = 0; i != y; i++) {
+		for (int g = 0; g != x; g++) {
+			if (g == 0 || g == x - 1)
+				av[i][g] = '!';
+			else if (i == 0)
+				av[i][g] = '^';
+			else if(i == y - 1)
+				av[i][g]  = '_';
+			else
+				av[i][g] = ' ';
+		}
+	}
+	av[i] = NULL;
+	return (av);
+}
+
+char	**create_squaree(int y, int x, char **av)
+{
+	int	i;
 
 	for (i = 0; i != y; i++) {
 		for (int g = 0; g != x; g++) {
