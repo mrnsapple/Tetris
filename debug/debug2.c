@@ -1,4 +1,5 @@
 
+
 /*
 ** EPITECH PROJECT, 2018
 ** dkwnmwkand
@@ -30,15 +31,32 @@ void	print_debug(debug_t *a, debug_t *b)
 	my_putstr(b->size);
 }
 
+int	what_word_is(char *av)
+{
+	int	i;
+	
+	i = my_strlen(av);
+	if (i == 1)
+		return (1);
+	else if (i == 0)
+		return (0);
+	else
+		if (my_strcmp("(space)", av) == 1)
+			return (1);	
+	return (0);	
+}
+
 int	after_slash_a_word(char **av)
 {
 	for (int i = 0; av[i] != NULL; i++) {
 		if (my_strlen(av[i]) >= 2 && av[i + 1] != NULL &&
-		    my_strcmp("-D", av[i]) != 1) 
-			if (av[i][0] == '-' && av[i][1] != '-'
-			    && av[i + 1][0] == '-')
-				return (0);
-		    
+		    my_strcmp("-D", av[i]) != 1)
+			if (av[i][0] == '-' && av[i][1] != '-') {
+				if (av[i + 1][0] == '-')
+					return (0);
+				if  (what_word_is(av[i + 1]) != 1)
+					return (0);
+			}
 	}
 	return (1);
 }

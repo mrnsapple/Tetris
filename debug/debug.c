@@ -30,7 +30,6 @@ int	transform_debug(int c, int option_index, debug_t *debug)
 	char	*flag = NULL;
 
 	flag = optarg;
-	//printf("c:%c, %s\n", c, flag);
 	if (c == '?')
 		return (0);
 	if (flag == NULL)
@@ -46,19 +45,7 @@ int	transform_debug(int c, int option_index, debug_t *debug)
 		return (0);
 	return (1);
 }
-/*void	same_value_in_2(debug_t *de)
-{
-	char	**a;
 
-	a = malloc(sizeof(char*) * 10);
-	a[0] = de->left;
-	a[1] = de[1];
-	a[2] = de[2];
-	a[3] = de[3];
-	for (int i = 0; i != 9; i++)
-		a[i] == '0';
-}
-*/
 int	getopt_use(int ac, char **av, debug_t *debug)
 {
 	int	option_index = 0;
@@ -80,7 +67,7 @@ int	getopt_use(int ac, char **av, debug_t *debug)
 		};
 	while((c = getopt_long (ac, av, "DL:l:r:t:d:q:p:w:m:d:", long_options,
 				&option_index)) != -1) {
-	        if (long_options[option_index].flag != 0)
+		if (long_options[option_index].flag != 0)
 			return (0);
 		if (transform_debug(c, option_index, debug) == 0)
 			return (0);
