@@ -32,7 +32,7 @@ int	transform_debug(int c, int option_index, debug_t *debug)
 	flag = optarg;
 	if (c == '?')
 		return (0);
-	printf("flag:%s, c:%c\n", flag, c);
+	//printf("flag:%s, c:%c\n", flag, c);
 	if (flag == NULL)
 		return (1);
 	flag = modify_flag(flag);
