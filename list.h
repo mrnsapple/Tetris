@@ -32,7 +32,7 @@ typedef struct	coord_t
 	int	x;
 	int	y;
 	int	z;
-}coord_t;
+} coord_t;
 
 typedef	struct	each
 {
@@ -40,7 +40,7 @@ typedef	struct	each
 	char	**map;
 	char	size[2];
 	char	*name;
-}each;
+} each;
 
 typedef struct debug
 {
@@ -55,7 +55,7 @@ typedef struct debug
 	char	*level;
 	char	*size;
 	int	ch;
-}debug_t;
+} debug_t;
 
 typedef struct	pieces
 {
@@ -65,21 +65,20 @@ typedef struct	pieces
 	char		*name;
 	char		*dir_name;
 	struct pieces	*next;
-}pieces_t;
-void    delete_all_stars(char **reference);
+} pieces_t;
 
-void    print_map(char **av);
-int     helped(int ac, char **av);
-pieces_t        *order_pieces_two(pieces_t *after, pieces_t *tmp);
-
-pieces_t	*get_pieces(pieces_t *a);
+void			delete_all_stars(char **reference);
+void			print_map(char **av);
+int			 helped(int ac, char **av);
+pieces_t		*order_pieces_two(pieces_t *after, pieces_t *tmp);
+pieces_t		*get_pieces(pieces_t *a);
 void	print_debug(debug_t *a, debug_t *b);
 int	transform_debug_second(char *flag, int c,
-			       int option_index, debug_t *debug);
-void    move_right(char **reference, char **av);
+				   int option_index, debug_t *debug);
+void	move_right(char **reference, char **av);
 int	just_points(char *a);
-char    **create_squaree(int y, int x, char **av);
-int     after_slash_a_word(char **av);
+char	**create_squaree(int y, int x, char **av);
+int	 after_slash_a_word(char **av);
 void	n_curing(pieces_t *a, debug_t *debub, debug_t *debug_text);
 char	**create_square(int y, int x);
 void	create_circular_list(pieces_t *a, pieces_t **b);
