@@ -12,7 +12,7 @@ int	error_piece(char *file, pieces_t *a)
 	int	fd;
 	int	size;
 	int	y = 0;
-	char    buff[2];
+	char	buff[2];
 	int	x[2] = {0,0};
 
 	fd = open(file, O_RDONLY, 0644);
@@ -43,9 +43,9 @@ int	before_error_piece(char *file, pieces_t *a)
 
 int     feed_piece(pieces_t *a, char *name)
 {
-	int     fd;
+	int	fd;
 	int	size = 0;
-	char    *file;
+	char	*file;
 
 	file = file_name(name, size);
 	a->name = delete_after_point(name);

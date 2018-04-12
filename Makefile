@@ -18,6 +18,7 @@ SRC 	=	main.c				\
 		my_puts/put_in_array.c		\
 		ncurse.c			\
 		ncruse2.c			\
+		ncurse3.c			\
 		debug/debug.c			\
 		debug/debug2.c			\
 		add_piece.c			\

@@ -7,39 +7,6 @@
 
 #include "../list.h"
 
-void	print_list(pieces_t *a)
-{
-	pieces_t	*tmp;
-
-	tmp = a;
-	while (tmp != NULL) {
-		my_putstr(tmp->dir_name);
-		my_putchar('\n');
-		tmp = tmp->next;
-	}
-}
-
-void	part_of_order_pieces(pieces_t *before, pieces_t *after,
-			     pieces_t *a, pieces_t *tmp)
-{
-	pieces_t	**list = &a;
-
-	a = after;
-	*list = a;
-	tmp = *list;
-}
-
-pieces_t	*order_pieces_two(pieces_t *after, pieces_t *tmp)
-{
-	after = tmp->next;
-	if (tmp->next->next == NULL)
-		tmp->next = NULL;
-	else
-		tmp->next = tmp->next->next;
-	after->next = tmp;
-	return (after);
-}
-
 void	order_pieces_rotate(pieces_t *a, pieces_t *after,
 			    pieces_t **list, pieces_t *tmp)
 {

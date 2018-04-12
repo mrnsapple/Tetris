@@ -1,8 +1,8 @@
 /*
 * EPITECH PROJECT, 2018
-** d
+** dermar
 ** File description:
-** dk
+** dkeee
 */
 
 #include "list.h"
@@ -67,10 +67,6 @@ void	can_move_left(char **reference, char **av, pieces_t *a)
 
 int	gameplay(char **reference, char **av, pieces_t *a, debug_t *debug)
 {
-	//printf("key:%d\n", KEY_LEFT);
-	//mvprintw(0,0, "left:%s, right:%s, ch: %c, %d\n", debug->left, debug->right, debug->ch, debug->ch);
-	//if (debug->ch == 'd')
-	//	printw("its a di\n");
 	if (debug->ch == KEY_RIGHT || debug->ch == debug->right[0])
 		can_move_right(reference, av, a);
 	if (debug->ch == KEY_LEFT || debug->ch == debug->left[0])

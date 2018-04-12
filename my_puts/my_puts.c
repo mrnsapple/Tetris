@@ -27,7 +27,7 @@ void	my_putchar(char c)
 int	my_putstr(char *str)
 {
 	int	i = 0;
-
+	
 	while(str[i] != '\0') {
 		my_putchar(str[i]);
 		i++;
@@ -35,15 +35,13 @@ int	my_putstr(char *str)
 	return (0);
 }
 
-int my_strcmp(char *pwd, char *line)
+int	my_strcmp(char *pwd, char *line)
 {
 	int     i;
 
 	for (i = 0; line[i] != '\0'; i++)
-	{
 		if(pwd[i] != line[i])
 			return (0);
-	}
 	return (1);
 }
 
@@ -59,28 +57,4 @@ int	is_num(char *str)
 	if (g == 1)
 		return (1);
 	return (0);
-}
-
-int	my_get_nbr(char *str)
-{
-	double  x = 0;
-	int     y = 0;
-	int     z = 1;
-
-	if (is_num(str) == 0)
-		return(-84);
-	for (y = 0; str[y] == '-' || str[y] == '+' ||
-		     str[y] < '0' || str[y] > '9'; y++) {
-		if (str[y] == '-')
-			z *= -1;
-	}
-	for (y = y; str[y] != '\0' && str[y] >= '0' && str[y] <= '9'; y++) {
-		x = (x * 10);
-		x = (str[y] - 48) + x;
-	}
-	if (z == -1)
-		x *= -1;
-	if (x < -2147483648 || x > 2147483647)
-		return (0);
-	return ((int)x);
 }

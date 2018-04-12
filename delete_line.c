@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2018
-** dj
+** djddde
 ** File description:
-** dk
+** dkw
 */
 
 #include "list.h"
@@ -33,3 +33,12 @@ void	delete_complete_line(char **av, char **reference, char *score)
 		}
 	}
 }
+
+void	delete_all_stars(char **reference)
+{
+	for (int y = 0; reference[y] != NULL; y++)
+		for (int x = 0; reference[y][x] != '\0'; x++)
+			if (reference[y][x] == '*')
+				reference[y][x] = '_';
+}
+

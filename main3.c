@@ -36,8 +36,8 @@ int     place_dir_name_list(pieces_t **list, pieces_t *a, char *dir_name)
 
 pieces_t	*get_pieces(pieces_t *a)
 {
- 	DIR     *fd;
-	struct dirent   *buff;
+	DIR		*fd;
+	struct dirent	*buff;
 
 	fd = opendir("tetriminos");
 	if (fd == NULL)
@@ -50,9 +50,9 @@ pieces_t	*get_pieces(pieces_t *a)
 	return (a);
 }
 
-void    print_pieces_number(pieces_t *a)
+void	print_pieces_number(pieces_t *a)
 {
-	char    i;
+	char	i;
 
 	for (i = '0'; a != NULL; i++, a = a->next);
 	my_putstr("Tetriminos :  ");
@@ -60,7 +60,7 @@ void    print_pieces_number(pieces_t *a)
 	my_putchar('\n');
 }
 
-int     debug_tetrimino(pieces_t *a)
+int	debug_tetrimino(pieces_t *a)
 {
  	while (a) {
 		my_putstr("Tetriminos :  Name ");

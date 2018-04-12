@@ -67,6 +67,7 @@ debug_t	*debug_mode(int ac, char **av, pieces_t *a)
 	free(debug_text);
 	return (debug);
 }
+
 void	modify_debug(debug_t *debug)
 {
 	if (my_strcmp(debug->left, "(space)") == 1)
@@ -79,14 +80,13 @@ int	main(int ac, char **av)
 {
 	pieces_t	*a = NULL;
 	debug_t		*debug = NULL;
+	int		help;
 
-	if (av == NULL)
-		return (84);			     
-	for (int i = ac - 1; i != 0; i--)
-		if (strcom("--help", av[i]) == 1) {
-			help(ac, av);
-			return (0);
-		}
+	help = helped(ac, av);
+	if (help == 0)
+		return (84);
+	if (help == 1)
+		return (0);
 	a = get_pieces(a);
 	if (a == NULL)
 		return (84);
@@ -96,9 +96,9 @@ int	main(int ac, char **av)
 	if (debug == NULL)
 		return (84);
 	my_putstr("Press any key to start Tetris");
-	//printf("key:%d\n", KEY_LEFT);
 	modify_debug(debug);
 	start_game(debug, a);
+	endwin();
 	free(a);
 	return (0);
 }

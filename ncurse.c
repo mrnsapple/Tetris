@@ -14,14 +14,6 @@
 #include <unistd.h>
 #include "list.h"
 
-void	print_map(char **av)
-{
-	for (int i = 0; av[i] != NULL; i++) {
-		printw(av[i]);
-		printw("\n");
-	}
-}
-
 int	ncurse_stuff(void)
 {
 	int	ch = 0;
@@ -90,5 +82,4 @@ void	start_game(debug_t *debug, pieces_t *a)
 		gameplay(reference, av, a, debug);
 		delete_complete_line(reference, av, &score);
 	}
-	endwin();
 }

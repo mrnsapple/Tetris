@@ -66,6 +66,12 @@ typedef struct	pieces
 	char		*dir_name;
 	struct pieces	*next;
 }pieces_t;
+void    delete_all_stars(char **reference);
+
+void    print_map(char **av);
+int     helped(int ac, char **av);
+pieces_t        *order_pieces_two(pieces_t *after, pieces_t *tmp);
+
 pieces_t	*get_pieces(pieces_t *a);
 void	print_debug(debug_t *a, debug_t *b);
 int	transform_debug_second(char *flag, int c,

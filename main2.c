@@ -7,6 +7,18 @@
 
 #include "list.h"
 
+int	helped(int ac, char **av)
+{
+	if (av == NULL)
+		return (0);
+	for (int i = ac - 1; i != 0; i--)
+		if (strcom("--help", av[i]) == 1) {
+			help(ac, av);
+			return (1);
+		}
+	return (2);
+}
+
 int	strcom(char *a, char *b)
 {
 	int     i;
@@ -37,13 +49,12 @@ void	move_right(char **reference, char **av)
 
 	for (l = 0; reference[0][l] != '\0'; l++);
 	for (int y = 0; reference[y] != NULL; y++)
-		for (int x = l - 1; x != 0; x--) {
+		for (int x = l - 1; x != 0; x--)
 			if (reference[y][x] == '*') {
 				reference[y][x] = ' ';
 				reference[y][x + 1] = '*';
 				av[y][x] = ' ';
 				av[y][x + 1] = '*';
 			}
-		}
 }
 

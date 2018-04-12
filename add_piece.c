@@ -6,14 +6,6 @@
 */
 
 #include "list.h"
- 
-void	delete_all_stars(char **reference)
-{
-	for (int y = 0; reference[y] != NULL; y++)
-		for (int x = 0; reference[y][x] != '\0'; x++)
-			if (reference[y][x] == '*')
-				reference[y][x] = '_';
-}
 
 void	here_really_trans_map(pieces_t **b, int *i, char **reference)
 {

@@ -42,7 +42,7 @@ int	what_word_is(char *av)
 		return (0);
 	else
 		if (my_strcmp("(space)", av) == 1)
-			return (1);	
+			return (1);
 	return (0);	
 }
 
