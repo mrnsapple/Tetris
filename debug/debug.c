@@ -19,9 +19,9 @@ char	*modify_flag(char *a)
 {
 	if (my_strcmp(a, " ") == 1 || my_strcmp(a, "(space)") == 1)
 		return ("(space)");
-	if (a[0] != '\0')
-		a[1] = '\0';
-	return (a);
+	if (a[0] != '\0' && a[1] == '\0')
+	        return (a);
+	return (NULL);
 }
 
 int	transform_debug(int c, int option_index, debug_t *debug)
@@ -32,9 +32,12 @@ int	transform_debug(int c, int option_index, debug_t *debug)
 	flag = optarg;
 	if (c == '?')
 		return (0);
+	printf("flag:%s, c:%c\n", flag, c);
 	if (flag == NULL)
 		return (1);
 	flag = modify_flag(flag);
+	if (flag == NULL)
+		return (0);
 	if (c == 'L') {
 		if (its_num(flag) == 0)
 			return (0);

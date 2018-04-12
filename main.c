@@ -80,6 +80,8 @@ int	main(int ac, char **av)
 	pieces_t	*a = NULL;
 	debug_t		*debug = NULL;
 
+	if (av == NULL)
+		return (84);			     
 	for (int i = ac -1; i != 0; i--)
 		if (strcom("--help", av[i]) == 1) {
 			help(ac, av);
