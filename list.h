@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2018
 ** djek
 ** File description:
-** dekde
+** by oriol
 */
 
 #include <time.h>

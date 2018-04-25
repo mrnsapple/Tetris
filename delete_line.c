@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2018
 ** djddde
 ** File description:
-** dkw
+** dkwd
 */
 
 #include "list.h"

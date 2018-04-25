@@ -1,10 +1,8 @@
-
-
 /*
 ** EPITECH PROJECT, 2018
 ** dkwnmwkand
 ** File description:
-** dekad
+** by mrnsapple
 */
 
 #include "../list.h"

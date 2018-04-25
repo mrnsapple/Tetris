@@ -2,7 +2,7 @@
 ## EPITECH PROJECT, 2017
 ##
 ## File description:
-##
+## by mrnsapple
 ##
 
 SRC 	=	main.c				\

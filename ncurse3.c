@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2018
 ** ula
 ** File description:
-** yeahbro
+** by mrnsapple
 */
 
 #include <stdlib.h>

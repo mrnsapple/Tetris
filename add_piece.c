@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2018
-** dk Aimane
-** File description:
-** dj Oriol
+** 
+**  File description:
+** by mrnsapple
 */
 
 #include "list.h"
